@@ -1,0 +1,202 @@
+<Module name="tticol042">
+      <operationName name="ConsultarPorPalletID">
+        <stringSQL>
+          SELECT  col042.T$PRO1 PROC, col042.T$MITM ITEM, ibd001.T$DSCA DSCA, col422.T$ACQT ACQT, col042.T$CUNI CUNI, col042.T$DELE STAT
+          FROM  {2} col042
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.T$ITEM = col042.T$MITM
+          LEFT JOIN {0}.tticol242{1} col242 ON col242.T$PDNO = col042.T$PDNO AND col242.T$SQNB = col042.T$SQNB
+          WHERE col042.T$SQNB = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="SecuenciaMayor042">
+        <stringSQL>
+          select * from (select * from BAAN.tticol042140 where T$SQNB LIKE '%[:T$SQNB]-C%' order by T$SQNB desc) where rownum = 1
+        </stringSQL>
+      </operationName>
+      <operationName name="InsertarRegistroTicol242">
+        <stringSQL>
+          INSERT INTO {0}.tticol242{1} (T$PDNO,T$SQNB,T$DRPT,T$URPT,T$ACQT,T$CWAF,T$CWAT,T$ACLO,T$REFCNTD,T$REFCNTU)
+          VALUES('[:T$PDNO]','[:T$SQNB]',SYSDATE+5/24,'[:T$URPT]','[:T$ACQT]','[:T$CWAF]','[:T$CWAT]','[:T$ACLO]',0,0)
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistroSimple">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$QTDL, T$CUNI, T$LOG1,
+          T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP,
+          T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$SQNB, :T$PROC, :T$LOGN, sysdate+5/24, :T$MITM, :T$QTDL, :T$CUNI, :T$LOG1,
+          sysdate+5/24, :T$QTD1, :T$PRO1, :T$LOG2, sysdate+5/24, :T$QTD2, :T$PRO2, :T$LOCA, :T$NORP,
+          sysdate+5/24, :T$DELE, :T$LOGD, sysdate+5/24, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistroSimpleD">
+        <stringSQL>
+          INSERT INTO BAAN.tticol042140 (
+          T$PDNO,
+          T$SQNB,
+          T$PROC,
+          T$LOGN,
+          T$DATE,
+          T$MITM,
+          T$PONO,
+          T$QTDL,
+          T$CUNI,
+          T$LOG1,
+          T$DATC,
+          T$QTD1,
+          T$PRO1,
+          T$LOG2,
+          T$DATU,
+          T$QTD2,
+          T$PRO2,
+          T$LOCA,
+          T$NORP,
+          T$DLRP,
+          T$DELE,
+          T$LOGD,
+          T$DATD,
+          T$REFCNTD,
+          T$REFCNTU
+          )
+          VALUES (
+          '[:T$PDNO]',
+          '[:T$SQNB]',
+          '[:T$PROC]',
+          '[:T$LOGN]',
+          sysdate+5/24,
+          '[:T$MITM]',
+          '[:T$PONO]',
+          '[:T$QTDL]',
+          '[:T$CUNI]',
+          '[:T$LOG1]',
+          sysdate+5/24,
+          '[:T$QTD1]',
+          '[:T$PRO1]',
+          '[:T$LOG2]',
+          sysdate+5/24,
+          '[:T$QTD2]',
+          '[:T$PRO2]',
+          '[:T$LOCA]',
+          '[:T$NORP]',
+          sysdate+5/24,
+          '[:T$DELE]',
+          '[:T$LOGD]',
+          sysdate+5/24,
+          0,
+          0
+          )
+        </stringSQL>
+      </operationName>
+      <operationName name="ActualizarUbicacionTicol242">
+        <stringSQL>
+          UPDATE {0}.tticol242{1} SET T$CWAF = '[:T$CWAT]', T$ACLO = '[:T$ACLO]' WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizaRegistro_LocationRegrind">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$LOG2 = '[:T$LOG2]',
+          T$DATU = sysdate+(5/24),
+          T$QTD2 = '[:T$QTD2]',
+          T$PRO2 = '[:T$PRO2]',
+          T$LOCA = '[:T$LOCA]',
+          T$DELE = '[:T$DELE]'
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$PONO, T$QTDL, T$CUNI, T$LOG1, T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP, T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$SQNB, :T$PROC, :T$LOGN, sysdate+(5/24), :T$MITM, :T$PONO, :T$QTDL, :T$CUNI, :T$LOG1, sysdate+(5/24), :T$QTD1, :T$PRO1, :T$LOG2, sysdate+(5/24), :T$QTD2, :T$PRO2, :T$LOCA, :T$NORP, sysdate+(5/24), :T$DELE, :T$LOGD, sysdate+(5/24), :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="listaCantidadRegrind">
+        <stringSQL>
+          SELECT LTRIM((LPAD((COUNT(T$PDNO) + 1),3,'0')), '0') CANT
+          FROM {2}
+          WHERE T$PDNO = '[:T$PDNO]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB">
+        <stringSQL>
+          SELECT T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$PONO, T$QTDL, T$CUNI, T$LOG1, T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP, T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU
+          FROM {2}
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="ListaRegistro_ReprintRegrind">
+        <stringSQL>
+          SELECT  A.T$PDNO, A.T$PONO, A.T$MITM, A.T$QTDL, '' T$CWAR, A.T$LOGN, A.T$DATE-5/24 t$DATE, A.T$PROC, A.T$REFCNTD, A.T$REFCNTU, '' T$CLOT, B.T$MCNO, C.T$DSCA, A.T$NORP, A.T$CUNI, A.T$SQNB, A.T$DLRP-5/24 T$DLRP
+          FROM	{0}.TTICOL042{1} A INNER JOIN
+          {0}.TTICOL011{1} B ON A.T$PDNO = B.T$PDNO INNER JOIN
+          {0}.TTCIBD001{1} C ON A.T$MITM = C.T$ITEM
+          WHERE 	A.T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="ActualizaRegistro_ReprintRegrind">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$NORP = '[:T$NORP]',
+          T$DLRP = sysdate+(5/24)
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="wrapRegrind_ActualizaRegistro">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$DELE = [:T$DELE]
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB_ConfirmedRegrind">
+        <stringSQL>
+          SELECT A.T$PDNO, A.T$SQNB, A.T$MITM, A.T$QTDL, A.T$CUNI, A.T$PONO, A.T$PRO1, B.T$DSCA, C.T$CWAR, A.T$DELE
+          FROM {0}.tticol042{1} A INNER JOIN
+          {0}.ttcibd001{1} B ON TRIM(A.T$MITM) = TRIM(B.T$ITEM) INNER JOIN
+          {0}.tticst001{1} C ON A.T$PDNO = C.T$PDNO AND A.T$PONO = C.T$PONO
+          WHERE TRIM(A.T$SQNB) = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizaRegistro_ConfirmedRegrind">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$LOG1 = '[:T$LOG1]',
+          T$DATC = sysdate+(5/24),
+          T$QTD1 = '[:T$QTD1]',
+          T$PRO1 = '[:T$PRO1]',
+          T$DELE = '[:T$DELE]'
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB_LocatedRegrind">
+        <stringSQL>
+          SELECT A.T$PDNO, A.T$SQNB, A.T$MITM, A.T$QTDL,A.T$DELE, A.T$CUNI, A.T$PONO, A.T$PRO2, B.T$DSCA,B.T$KLTC,C.T$CWAR
+          FROM {0}.tticol042{1} A INNER JOIN
+          {0}.ttcibd001{1} B ON TRIM(A.T$MITM) = TRIM(B.T$ITEM) INNER JOIN
+          {0}.tticst001{1} C ON A.T$PDNO = C.T$PDNO AND A.T$PONO = C.T$PONO
+          WHERE TRIM(A.T$SQNB) = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB_FindLocation">
+        <stringSQL>
+          SELECT A.T$PDNO, SUBSTR(TRIM(A.T$SQNB),-1,3) T$SQNB, A.T$MITM, A.T$QTDL, A.T$CUNI, A.T$PONO, A.T$PRO2, B.T$DSCA, C.T$CWAR, D.T$LOCA
+          FROM {0}.tticol042{1} A INNER JOIN
+          {0}.ttcibd001{1} B ON TRIM(A.T$MITM) = TRIM(B.T$ITEM) INNER JOIN
+          {0}.tticst001{1} C ON A.T$PDNO = C.T$PDNO AND A.T$PONO = C.T$PONO INNER JOIN
+          {0}.twhwmd300{1} D ON C.T$CWAR = D.T$CWAR
+          WHERE TRIM(A.T$SQNB) = '[:T$SQNB]'
+          AND D.T$LOCA = '[:T$LOCA]'
+        </stringSQL>
+      </operationName>
+      <!--<operationName name="actualizaRegistro_LocationRegrind">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$LOG2 = '[:T$LOG2]',
+          T$DATU = sysdate+(5/24),
+          T$QTD2 = '[:T$QTD2]',
+          T$PRO2 = '[:T$PRO2]',
+          T$LOCA = '[:T$LOCA]'
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>-->
+    </Module>

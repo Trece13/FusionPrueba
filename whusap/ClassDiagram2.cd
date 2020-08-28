@@ -1,0 +1,752 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="whusap.Global" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAECIBAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.MDMasterPage" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIAkAQIADBAABCSiECogCBBAAAAgoBAIBBAGEBIAEEA=</HashCode>
+      <FileName>MDMasterPage.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.Tabla" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Tabla.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.About" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>WebPages\About.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap._Default" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>WebPages\Default.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.SendMailService.Email" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAABICAAEAAAEQAIABAQAAgAAIAAAEIAAAAIIAAAA=</HashCode>
+      <FileName>Service References\SendMailService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="whusap.SendMailService.EmailAccount" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACgAAAAAAAAAAAAAAAgAAAAAAGAAAAAAIACEA=</HashCode>
+      <FileName>Service References\SendMailService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="whusap.SendMailService.CodePageDataItem" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAACAEAAAAAiAAAAAAAQgAKAAAAEAAIBAAIIAEA=</HashCode>
+      <FileName>Service References\SendMailService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="whusap.SendMailService.SendMailServiceClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SendMailService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="whusap.ServiceReference1.Ent_tticol125" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAHAIIAAAAIAAQAIiAAhgACAggGAlCgAUJAQQA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="whusap.ServiceReference1.enviaDatosRequest" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.ServiceReference1.enviaDatosRequestBody" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.ServiceReference1.enviaDatosResponse" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.ServiceReference1.enviaDatosResponseBody" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.ServiceReference1.InterfazServicioWhusaClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAEAAAAQAAAAAQAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="whusap.WebPages.Archivos.whInvOpenFiles" Collapsed="true">
+    <Position X="20" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAQRQAQCAAABADgAIEAgUAAAABABBABAAgIAAIAEAQ=</HashCode>
+      <FileName>WebPages\Archivos\whInvOpenFiles.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Balance.whInvConfirmedRegrind" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAQgAUAUWAKABACgAIgAAIAAQAgIBBwFBAwAEAJIEAU=</HashCode>
+      <FileName>WebPages\Balance\whInvConfirmedRegrind.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Balance.whInvLabel" Collapsed="true">
+    <Position X="11.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAQIACAAgpBCgAIAAAIAwAAAABAABAAwQCAMIECQ=</HashCode>
+      <FileName>WebPages\Balance\whInvLabel.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Balance.whInvLabelRegrind" Collapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JgAgBQIRXCqgJBSwAIgEAOAwDAgEBRABAIwBMAIAIaQ=</HashCode>
+      <FileName>WebPages\Balance\whInvLabelRegrind.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Balance.whInvLabelRegrindm" Collapsed="true">
+    <Position X="6" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JACwBQARXCqABBTwAIkAAOAgDABABRABAIwJOAMAMaQ=</HashCode>
+      <FileName>WebPages\Balance\whInvLabelRegrindm.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Balance.whInvLocatedRegrind" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FAIgAWAQWAKABACgAIgAAKAAQEgIBBwFBAxAAIJIEAU=</HashCode>
+      <FileName>WebPages\Balance\whInvLocatedRegrind.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Balance.whInvReprintLabelRegrind" Collapsed="true">
+    <Position X="21.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAQIAWAKABACgAIAAAIAQAAAABAABAAwAEAIIEAQ=</HashCode>
+      <FileName>WebPages\Balance\whInvReprintLabelRegrind.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.GenericProducts.genericProducts_LablesPrint" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgAABQIQCAwAFACgAIAEEEAQAAAGBAAhAAgAAAIACAQ=</HashCode>
+      <FileName>WebPages\GenericProducts\genericProducts_LablesPrint.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Inventarios.whInvInventory" Collapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ANJgASERXBCABFCoGIsAAMAuBEAABhBDAhCEIAoNgAQ=</HashCode>
+      <FileName>WebPages\Inventarios\whInvInventory.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Inventarios.whInvInventoryfp" Collapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJBggSERXBSABFCoGIsEAMBuBAAABhADAhCAICoNgAQ=</HashCode>
+      <FileName>WebPages\Inventarios\whInvInventoryfp.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Inventarios.whInvInventoryNoLocations" Collapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJIgQQERfBCAhFCgGIsAAMAmBEAABhBBABCEIgsNgAQ=</HashCode>
+      <FileName>WebPages\Inventarios\whInvInventoryNoLocations.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvLogistica.whInvConfirmReceipt" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABQAICAAADMCghIhACAMAAQCFBAAFFABAgAJYIQw=</HashCode>
+      <FileName>WebPages\InvLogistica\whInvConfirmReceipt.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvLogistica.whInvSugUbicacion" Collapsed="true">
+    <Position X="14.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABSAMCAQADMCqhIhoCAMAACCNBAAVAADAiAJQACQ=</HashCode>
+      <FileName>WebPages\InvLogistica\whInvSugUbicacion.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.whInvSugUbicacionConOrigen" Collapsed="true">
+    <Position X="16.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABSAMCAQATMCqhIhojAMAACCchAAFAADAiIpQACQ=</HashCode>
+      <FileName>WebPages\InvLogistica\whInvSugUbicacionConOrigen.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialDevolReprintLabel" Collapsed="true">
+    <Position X="16.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgAAIQIACAQBFACgAIAEEEAQAAgGBAABAAgAAAICAAA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialDevolReprintLabel.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialDevolution" Collapsed="true">
+    <Position X="18.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAJQIQCAgBFQCoAIAEAEAQAAgGBBAxAQAACAIACAA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialDevolution.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialDevolutionConfirm" Collapsed="true">
+    <Position X="20" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgAEJQIQCAwAFACgAIAEAEAQAAgGBBABAAAAAAIAAAA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialDevolutionConfirm.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialPlasticBoxesTracker" Collapsed="true">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAAQAADAAABACgAAAIAEACCMAABgABAAAAAQIAAAA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialPlasticBoxesTracker.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialPlasticReturnBoxesTracker" Collapsed="true">
+    <Position X="6" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CNIBAQKQiAAAtBiwAQQAIACECoAABMABoiBAAEIEAgg=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialPlasticReturnBoxesTracker.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialPlasticUsedBoxesTracker" Collapsed="true">
+    <Position X="7.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAQAACAAABAGgAAQAAAAAAIBABAABAAAQAAMAEAA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialPlasticUsedBoxesTracker.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialRejectedD" Collapsed="true">
+    <Position X="11.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACYNYI5CKAFFACoiYAEIEAQCEACBhBZAACACALAACA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialRejectedD.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialTakePrintLabel" Collapsed="true">
+    <Position X="16.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>INAAAQYADCAgJBSgAJAEBEAxDEQABwBBgAwAAAIBAQQ=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialTakePrintLabel.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvMaterialTakeRegister" Collapsed="true">
+    <Position X="18.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AJAAAQIAHAAgJBTgAJAGBEA5DkQAB4AhAAwAEAIJAQY=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvMaterialTakeRegister.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvSpareDelivery" Collapsed="true">
+    <Position X="9.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AmCABIYQIAAxMCCQAJAEAUAWQACGKJAJAAgAAAIACAA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvSpareDelivery.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvSpareDeliveryConfirm" Collapsed="true">
+    <Position X="11.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiAABAIQAAAxMCAAAJAEAEAQAACEAJAJAAgAAAIAAAA=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvSpareDeliveryConfirm.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvWrapRegrindValidation" Collapsed="true">
+    <Position X="14.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAgAQIQWAKABACgAIAAAIAQAAAABAABAAwACAIIEAQ=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvWrapRegrindValidation.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvMaterial.whInvWrapValidation" Collapsed="true">
+    <Position X="16.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAQICCAAgBACgAIAAAAAQAAAABAABAAwAAAIIECQ=</HashCode>
+      <FileName>WebPages\InvMaterial\whInvWrapValidation.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvAnunciosProd.whInvAnuncioOrden" Collapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ExBADEAAAAIAgBDAAYBAAoFCAgkMECIlOACQAALwSQQ=</HashCode>
+      <FileName>WebPages\InvProductos\whInvAnuncioOrden.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvProductos.whInvCertificados" Collapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABFIAAAAQAgCCAAICAAAACAIQEAAAFAgAAAEIoAAQ=</HashCode>
+      <FileName>WebPages\InvProductos\whInvCertificados.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.LocateRawMaterial" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAAAABCIAAAAAAAAAAAEAAAAAAAQAAIAAAA=</HashCode>
+      <FileName>WebPages\InvReceipts\LocateRawMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.PickMaterial" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAAAACCAAAAAAAAAAAAEAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>WebPages\InvReceipts\PickMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.whInvReceiptRawMaterial" Collapsed="true">
+    <Position X="11.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAERQAAKBEQSECgAEGDgAgIAIEEAIAKQAAgABJCEAA=</HashCode>
+      <FileName>WebPages\InvReceipts\whInvReceiptRawMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.Factor" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAABQAIAAAABAAAAAAAAAQAAAAAAEAABAQ=</HashCode>
+      <FileName>WebPages\InvReceipts\whInvReceiptRawMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.tcibd001" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAQAAAAAAAAAAAAAAAAAIAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>WebPages\InvReceipts\whInvReceiptRawMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.twhinh210" Collapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEARBAAAAIoAEAAAAAAABIAAAAAQAAQAAAAACAA=</HashCode>
+      <FileName>WebPages\InvReceipts\whInvReceiptRawMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.Unidad" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WebPages\InvReceipts\whInvReceiptRawMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvReceipts.whInvReprintReceiptRawMaterial" Collapsed="true">
+    <Position X="6" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAQAAAAAQAACAAEEBAAAgAAEEAIAIAAAgAAIAAAA=</HashCode>
+      <FileName>WebPages\InvReceipts\whInvReprintReceiptRawMaterial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvTrans.whInvGenerateUI" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAwBQAADAEABACiEIAAAAAREACEBAAFAAAAAQKAICU=</HashCode>
+      <FileName>WebPages\InvTrans\whInvGenerateUI.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvTrans.whInvLoadTruc" Collapsed="true">
+    <Position X="11.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhBgJSKECmA4DFCgAIBAiAAgA0oMBAQHAASAAEIJACQ=</HashCode>
+      <FileName>WebPages\InvTrans\whInvLoadReceiveTruck.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvTrans.whInvPrintUI" Collapsed="true">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAQACCAAABACgAIBAAAAAAAAEBBAFAAAAAAIBgAQ=</HashCode>
+      <FileName>WebPages\InvTrans\whInvPrintUI.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.InvTrans.whInvSupervisorTruck" Collapsed="true">
+    <Position X="18.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAghQMACAAQBACgQIDIgIABAiAEBAAFQAAAAAIBEQY=</HashCode>
+      <FileName>WebPages\InvTrans\whInvSupervisorTruck.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Labels.GenericProducts.Label_genericSemiFinish" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAgAAAAAAAAhAEAQAYAAAAAAMAAAEAAIAEEA=</HashCode>
+      <FileName>WebPages\Labels\GenericProducts\Label_genericSemiFinish.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Labels.whInvLabel" Collapsed="true">
+    <Position X="13" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAABAAAQAIQAAAAAMQAAAAAIIEEA=</HashCode>
+      <FileName>WebPages\Labels\whInvLabel.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Labels.whInvLabelMaterialRejectedD" Collapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAAAAAEAQAAAAAAIhAAAAAIAAIAAAMAAIAAAIAEAA=</HashCode>
+      <FileName>WebPages\Labels\whInvLabelMaterialRejectedD.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Labels.whInvLabelRegrind" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAgAAhAAAQAIQAAAAAMQAIIAAIAEEA=</HashCode>
+      <FileName>WebPages\Labels\whInvLabelRegrind.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Labels.whInvLabelUI" Collapsed="true">
+    <Position X="7.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQBAAgAAAAkCCAAABAAAADMQAAAAAIABAAAAIAAFA=</HashCode>
+      <FileName>WebPages\Labels\whInvLabelUI.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Labels.whInvPrintLabel" Collapsed="true">
+    <Position X="6" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFAAAAAAAAgASAAAAIhABAAAIAAIAAAMAAAAAAIAEAA=</HashCode>
+      <FileName>WebPages\Labels\whInvPrintLabel.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Labels.whInvPrintLabelPhysical" Collapsed="true">
+    <Position X="7.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAABAAEAAIAAIAAAMAAAAAAoBEEA=</HashCode>
+      <FileName>WebPages\Labels\whInvPrintLabelPhysical.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.LineClearance.whInvLineClearance" Collapsed="true">
+    <Position X="9.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABJQZQCAAhNCCgAJAEAEAQAgAGBBABBAwAABIgEgI=</HashCode>
+      <FileName>WebPages\LineClearance\whInvLineClearance.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Login.MDLogin" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAABBAAACAAAAAAAAAAAIAEEA=</HashCode>
+      <FileName>WebPages\Login\MDLogin.Master.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Login.whChangePassword" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABIQICHACAJAGgAIAIACAAAAAABAAFQUACAAMAAgA=</HashCode>
+      <FileName>WebPages\Login\whChangePassword.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Login.whLogIni" Collapsed="true">
+    <Position X="20" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAABISYKHAChpGGgCIAIgCACAAAgBICHR0gCAANAAlE=</HashCode>
+      <FileName>WebPages\Login\whLogIni.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Login.whMenuI" Collapsed="true">
+    <Position X="21.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAgIgCAAIgAAAAIAAAAAAAIAAgJAAIAAAI=</HashCode>
+      <FileName>WebPages\Login\whMenuI.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvAdvices" Collapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEIxQgKCAAADESghIBFAAMAAACEFIAFUABgAJKAGAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvAdvices.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvAlmArticulo" Collapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAABQAICAAABACoAIBgAAIVAACVBAAFAAAAAAIAAAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvAlmArticulo.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvAnuncioOrd" Collapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABQAICAAADMCgjIhACAOAMACFBAAPkABDgAIIIQQ=</HashCode>
+      <FileName>WebPages\Migration\whInvAnuncioOrd.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvArticulo" Collapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEABQAICAAABASoAIAAAAIVAECFBAAFAAAAAAIAAAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvArticulo.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvConfirm" Collapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAhQAICEQADACgEIAAAAMAAACEBAAFAAAAACKAEAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvConfirm.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvCosts" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABQAICAUADAChAIAAAAMAAICEDAAFBgAAACKAEAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvCosts.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvLabelPalletTags" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAQBSEOGAQghACwEJGACQYEAAiFBgAPBAAHABYBFCQ=</HashCode>
+      <FileName>WebPages\Migration\whInvLabelPalletTags.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvLabelPalletTagsPartial" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAQBSEKGAQghACwEIEACQYgAAiNBgAPBAAFABYBFCQ=</HashCode>
+      <FileName>WebPages\Migration\whInvLabelPalletTagsPartial.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvLocations" Collapsed="true">
+    <Position X="14.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAKxSACCAgABACgAIAAEBAAAAAEBAAFACAAAAIEACQ=</HashCode>
+      <FileName>WebPages\Migration\whInvLocations.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvMaterialRejected" Collapsed="true">
+    <Position X="9.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UhRINYkIGwQIHAypAYoIAB8iAAy1DgEPBCCICwKAkOQ=</HashCode>
+      <FileName>WebPages\Migration\whInvMaterialRejectedMachine.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvMaterialRejectedPlan" Collapsed="true">
+    <Position X="13" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgQINYkJGQAAPAyoAIIACBsiAAyEDAGPAACACKKAgEQ=</HashCode>
+      <FileName>WebPages\Migration\whInvMaterialRejectedPlant.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvMaterialRejectedWarehouse" Collapsed="true">
+    <Position X="14.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>lBmAFSMIGwAAH4igAIgiCAMrAECEBIhPBgCACiqQAyQ=</HashCode>
+      <FileName>WebPages\Migration\whInvMaterialRejectedWarehouse.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.ItemEsct" Collapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>WebPages\Migration\whInvMaterialRejectedWarehouse.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.DataItem" Collapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>WebPages\Migration\whInvMaterialRejectedWarehouse.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.Warehouse" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>WebPages\Migration\whInvMaterialRejectedWarehouse.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvPicking" Collapsed="true">
+    <Position X="21.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAKxSAACAgABACgAIAAEBIAAAAEBAAFAAAAAAIAAAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvPicking.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvReceipts" Collapsed="true">
+    <Position X="13" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAKxSAACAAABACgAIAAkBAAAAAEBAAFAgAAAAIEAAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvReceipts.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvReprintLabel" Collapsed="true">
+    <Position X="14.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JBAABSEICBQABASxAJAACQIEAByEBBANCAAEAAqI1CQ=</HashCode>
+      <FileName>WebPages\Migration\whInvReprintLabel.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvReprintLabelDmt" Collapsed="true">
+    <Position X="16.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EwwCNaEYKAEAHAmwAJIhABkmAAikFBBPACLCQAJAEUQ=</HashCode>
+      <FileName>WebPages\Migration\whInvReprintLabelDmt.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvReprintLabelMaterialRejectedD" Collapsed="true">
+    <Position X="18.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAFSEICAAgBACgAMgACgIgAEiMBBQNAgDAAgYAEEQ=</HashCode>
+      <FileName>WebPages\Migration\whInvReprintLabelMaterialRejectedD.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvReprintLabelMaterialRejectedM" Collapsed="true">
+    <Position X="20" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQANSEIKAQAHACwAZIgAQsmAAiEFBANIALAAApAEEQ=</HashCode>
+      <FileName>WebPages\Migration\whInvReprintLabelMaterialRejectedM.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvRollAnnounce" Collapsed="true">
+    <Position X="7.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhAABQAICBAABAChAIBACAAgAEieBAAFAgEAAAIgAEQ=</HashCode>
+      <FileName>WebPages\Migration\whInvRollAnnounce.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvStarWorkOrders" Collapsed="true">
+    <Position X="13" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABQAICASABACgAIAIAQIAAAiEDgAFIAAQAAMAEAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvStarWorkOrders.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvSuppliesRequest" Collapsed="true">
+    <Position X="20" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAABQKISEAABACgoIAgBQIkEADMZhoFIAIIAAIAEAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvSuppliesRequest.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvTime" Collapsed="true">
+    <Position X="21.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAABQAICQAADACgAIAQAAMAAgyFDAAFgCAIQCKEAAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvTime.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvTimeAbscent" Collapsed="true">
+    <Position X="6" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAABQAIHQEAHACgAIAQBAMAAgTEDAAFAEEAACKEEAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvTimeAbscent.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvTimeRegistration" Collapsed="true">
+    <Position X="7.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAABQAIDAAABACgAIAAAAIAAADEDAAFAAAAACIAEAQ=</HashCode>
+      <FileName>WebPages\Migration\whInvTimeRegistration.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvTransfers" Collapsed="true">
+    <Position X="9.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AFRARYEIChAARCCwAIAgAAgQBFSFBFEFAAQAAAMECHQ=</HashCode>
+      <FileName>WebPages\Migration\whInvTransfers.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvTransfersPlant" Collapsed="true">
+    <Position X="11.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABBAFQQADAAABACgAIAgAAAAAEAEBIAFABACAA6AQCQ=</HashCode>
+      <FileName>WebPages\Migration\whInvTransfersPlant.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Migration.whInvUbicacion" Collapsed="true">
+    <Position X="13" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAABQAICAAABACgAIEAAAIVAACFBAAFAAAAAAIACCQ=</HashCode>
+      <FileName>WebPages\Migration\whInvUbicacion.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="whusap.WebPages.Reports.whLoadXMLtoTable" Collapsed="true">
+    <Position X="18.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BoACAAAAAAAhAAQBIIBCIAAQAIAAgyCABAECAAIAAAA=</HashCode>
+      <FileName>WebPages\Reports\whLoadXMLtoTable.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebService" Collapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAgAAAAAQACEAAAA=</HashCode>
+      <FileName>WebServices\WebService.asmx.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="whusap.SendMailService.ISendMailService" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SendMailService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="whusap.SendMailService.ISendMailServiceChannel" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\SendMailService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="whusap.ServiceReference1.InterfazServicioWhusa" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAEAAAAQAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="whusap.ServiceReference1.InterfazServicioWhusaChannel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ServiceReference1\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="whusap.WebPages.Login.Categoria" Collapsed="true">
+    <Position X="6" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>WebPages\Login\whMenuI.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="whusap.WebPages.Migration.enumStatus" Collapsed="true">
+    <Position X="7.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAACAAEAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>WebPages\Migration\whInvStarWorkOrders.aspx.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

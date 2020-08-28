@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Definicion de las diferentes sentencias a ejecutar en las capas.
+Uso:
+Module: Corresponde al nombre de la clase
+operationName: Corresponde al nombre del metodo
+Consideraciones especiales:
+- El nombre del propietario de la base de datos debe ir  denotado entre corchetes simples con el numero Cero (0) : {0}
+- El ambiente de la base de datos debe ir  denotado entre corchetes simples con el numero Uno (1) : {1}
+- Cuando se envia el nombre completo de la tabla, es decir con estructura <propietario>.nombreTabla<Ambiente>, este debe ir denotado entre corchetes simples con el numero Dos (2) : {2}.  
+- Parametros en consultas: Los parametros en las consultas ha definir en la clausula WHERE, debe ir entre corchetes cuadrados [] y con 
+la denotacion p(n) donde n es un numero identificador (iniciando en uno (1)) que debe existir tambien en las condiciones.
+   Ejemplo de consulta final:
+                    SELECT campo1, campo2 
+                    FROM {0}.nombreTabla{1}
+                    WHERE condicion = '[p1]' AND condicion2 = '[p2]'... y asi sucesivamente.
+-->
+<DALResources>
+  <Modules>
+    <Module name="ttccol300">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$USER, T$NAMA, T$PASS, T$UFIN, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$USER, :T$NAMA,:T$PASS, :sysdate+(5/24), :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro">
+        <stringSQL>
+          UPDATE {2} SET
+          T$USER = :T$USER,
+          T$NAMA = :T$NAMA,
+          T$PASS = :T$PASS,
+          T$UFIN = sysdate+(5/24),
+          T$REFCNTD = :T$REFCNTD,
+          T$REFCNTU = :T$REFCNTU
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_Param">
+        <stringSQL>
+          SELECT TRIM(t$pass) pswd,TRIM(t$nama) Nombre, T$USER userN
+          FROM {2}
+          WHERE UPPER(TRIM(T$USER))='[p1]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttccol301">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$USER, T$FEIN, T$COME, T$REFCNTD, T$REFCNTU)
+          VALUES(:T$USER, sysdate+(5/24), :T$COME, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttccol303">
+      <operationName name="listaRegistrosMenu_Param">
+        <stringSQL>
+          SELECT col303.t$orde orden, TRIM(col302.t$prog) programa, TRIM(col302.t$boto) boton
+          FROM  {2} col303 inner join {0}.ttccol302{1} col302 on col302.t$SESS = col303.t$SESS
+          WHERE  UPPER(TRIM(col303.t$user))= '[p1]'
+          AND col303.t$orde != 0 ORDER BY col303.t$orde
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttcibd001">
+      <operationName name="listaRegistro_ObtieneClotUnitCOnv">
+        <stringSQL>
+          SELECT IBD001.T$KLTC CLOT, IBD001.T$CUNI UNIT, IBD003.T$CONV STRQTY
+          FROM {2} IBD001 LEFT JOIN
+          {0}.TTCIBD003{1} IBD003 ON IBD003.T$ITEM = IBD001.T$ITEM AND IBD003.T$BASU = IBD001.T$CUNI AND IBD003.T$UNIT = 'PLT'
+          WHERE TRIM(IBD001.T$ITEM) LIKE '[:T$ITEM]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_ObtieneAlmacen">
+        <stringSQL>
+          SELECT T$CWAR ALM
+          FROM {2}
+          WHERE TRIM(T$LOCA) = '[:T$LOCA]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_ObtieneDescripcionUnidad">
+        <stringSQL>
+          SELECT T$DSCA DESCRIPCION, T$CUNI UNID
+          FROM {2}
+          WHERE TRIM(T$ITEM) = '[:T$ITEM]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_ObtieneDescUnidNOLote">
+        <stringSQL>
+          SELECT T$DSCA DESCRIPCION, T$CUNI UNID
+          FROM {2}
+          WHERE T$KLTC NOT IN 1
+          AND TRIM(T$ITEM) = '[:T$ITEM]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol011">
+      <operationName name="invLabel_listaRegistrosOrdenMaquina_Param">
+        <stringSQL>
+          SELECT col011.t$mcno machine, col011.t$pdno orden
+          FROM {2} col011
+          WHERE col011.t$stat = '2' AND col011.t$mcno ='[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabel_listaRegistrosOrdenParam">
+        <stringSQL>
+          SELECT RTRIM(sfc001.t$pdno) orden, TRIM(sfc001.t$mitm) item, TRIM(ibd001.t$dsca) desci,
+          TRIM(ibd001.t$cuni) unidad, TRIM(sfc010.t$mcno) maquina
+          FROM {0}.ttisfc001{1} sfc001
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttisfc010{1} sfc010 ON sfc010.t$pdno = sfc001.t$pdno
+          WHERE sfc001.t$osta in('5','7','9') AND sfc001.t$pdno='[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabelRegrind_listaRegistrosOrdenMaquina_Param">
+        <stringSQL>
+          SELECT col011.t$mcno machine, col011.t$pdno orden
+          FROM {2} col011
+          WHERE col011.t$stat != '1' AND col011.t$pdno ='[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabelRegrind_listaRegistrosOrdenParam">
+        <stringSQL>
+          SELECT RTRIM(cst001.t$pdno) orden
+          FROM {0}.tticst001{1} cst001 INNER JOIN
+          {0}.ttisfc001{1} sfc001 ON  cst001.t$pdno = sfc001.t$pdno
+          WHERE t$osta in('5','7','9') and cst001.t$pdno='[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabelRegrind_listaRegistrosOrdenParam">
+        <stringSQL>
+          SELECT  TRIM(cst001.t$sitm) itemr, TRIM(ibd001.t$dsca) descar, cst001.t$pono POSICION,
+          ibd001.t$cuni UNIDAD, ibd001.t$cwar ALMACEN, cst001.t$clot LOTE, TRIM(sfc010.t$mcno) MAQUINA
+          FROM {0}.tticst001{1} cst001 INNER JOIN
+          {0}.ttcibd001{1} ibd001 ON ibd001.t$item = cst001.t$sitm INNER JOIN
+          {0}.ttisfc010{1} sfc010 ON sfc010.t$pdno = cst001.t$pdno
+          WHERE ibd001.t$cpcl = 'RET' and cst001.t$pdno ='[p1]'
+          ORDER BY ibd001.t$dsca
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosMaquina_Param">
+        <stringSQL>
+          SELECT rou002.t$mcno machine
+          FROM {2} rou002
+          WHERE rou002.t$mcno ='[p1]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol020">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} ( T$PDNO, T$MITM, T$DSCA, T$QTDL, T$CUNI, T$DATE, T$MESS, T$USER, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$MITM, :T$DSCA, :T$QTDL, :T$CUNI, sysdate+5/24, :T$MESS, :T$USER, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol022">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$QTDL, T$CUNI, T$LOG1,
+          T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP,
+          T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$SQNB, :T$PROC, :T$LOGN, sysdate+5/24, :T$MITM, :T$QTDL, :T$CUNI, :T$LOG1,
+          sysdate+5/24, :T$QTD1, :T$PRO1, :T$LOG2, sysdate+5/24, :T$QTD2, :T$PRO2, :T$LOCA, :T$NORP,
+          sysdate+5/24, :T$DELE, :T$LOGD, sysdate+5/24, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro_Param">
+        <stringSQL>
+		UPDATE {2} SET
+		T$PDNO = :T$PDNO,
+		T$SQNB = :T$SQNB,
+		T$PROC = :T$PROC,
+		T$LOGN = :T$LOGN,
+		T$MITM = :T$MITM,
+		T$QTDL = :T$QTDL,
+		T$CUNI = :T$CUNI,
+		T$LOG1 = :T$LOG1,
+		T$QTD1 = :T$QTD1,
+		T$PRO1 = :T$PRO1,
+		T$LOG2 = :T$LOG2,
+		T$QTD2 = :T$QTD2,
+		T$PRO2 = :T$PRO2,
+		T$LOCA = :T$LOCA,
+		T$NORP = :T$NORP,
+		T$DELE = :T$DELE,
+		T$LOGD = :T$LOGD,
+		T$REFCNTD = :T$REFCNTD,
+		T$REFCNTU = :T$REFCNTU
+		</stringSQL>
+      </operationName>
+      <operationName name="invLabel_generaSecuenciaOrden">
+        <stringSQL>
+          SELECT LPAD(NVL(SUBSTR(MAX(t$sqnb),INSTR(MAX(t$sqnb), '-', 1) + 1,
+          LENGTH(MAX(t$sqnb)) - INSTR(MAX(t$sqnb), '-', 1)), '0') + 1, 3, '0') SECUENCIA,
+          INSTR(MAX(t$sqnb), '-', 1) POSICION, MAX(t$sqnb) secuence
+          FROM {2} WHERE t$pdno = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabel_tiempoGrabacion">
+        <stringSQL>
+          SELECT NVL(COUNT(t$sqnb),'0') orden
+          FROM {2}
+          WHERE t$pdno = '[p1]'
+          AND t$date BETWEEN ((sysdate+5/24) - ([p2]/24/60))
+          AND (sysdate+5/24)
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabel_registroImprimir_Param">
+        <stringSQL>
+          SELECT T$PDNO ORDEN, T$SQNB SECUENCIA, T$MITM ITEM, T$QTDL PESO, T$LOGN USUARIO, T$DATE FECHA
+          FROM {2}
+          WHERE TRIM(t$pdno) = '[p1]' AND TRIM(t$sqnb) = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name="wrapValidation_listaRegistroSec_param">
+        <stringSQL>
+          SELECT T$PDNO ORDEN, T$SQNB SECUENCIA, T$MITM ITEM, T$QTDL PESO, T$LOGN USUARIO, T$DATE FECHA,
+          T$PROC, T$CUNI, T$LOG1, T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA,
+          T$NORP, T$DLRP, T$DELE, T$LOGD, T$DATD, T$CUNI UNIDAD, ROWID IDRECORD
+          FROM {2}
+          WHERE TRIM(t$sqnb) = '[p1]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol030">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2}  (T$PDNO, T$SQNB, T$MITM, T$DSCA, T$CWAR, T$LOCA, T$QTDL, T$CUNI, T$DATE, T$MESS, T$USER, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$SQNB, :T$MITM, :T$DSCA, :T$CWAR, :T$LOCA, :T$QTDL, :T$CUNI, sysdate+(5/24), :T$MESS, :T$USER, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol042">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$PONO, T$QTDL, T$CUNI, T$LOG1, T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP, T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$SQNB, :T$PROC, :T$LOGN, sysdate+(5/24), :T$MITM, :T$PONO, :T$QTDL, :T$CUNI, :T$LOG1, sysdate+(5/24), :T$QTD1, :T$PRO1, :T$LOG2, sysdate+(5/24), :T$QTD2, :T$PRO2, :T$LOCA, :T$NORP, sysdate+(5/24), :T$DELE, :T$LOGD, sysdate+(5/24), :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="listaCantidadRegrind">
+        <stringSQL>
+			SELECT LTRIM((LPAD((COUNT(T$PDNO) + 1),3,'0')), '0') CANT
+			FROM {2}
+			WHERE T$PDNO = '[:T$PDNO]'
+		</stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB">
+        <stringSQL>
+          SELECT T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$PONO, T$QTDL, T$CUNI, T$LOG1, T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP, T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU
+          FROM {2}
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="ListaRegistro_ReprintRegrind">
+        <stringSQL>
+          SELECT  A.T$PDNO, A.T$PONO, A.T$MITM, A.T$QTDL, '' T$CWAR, A.T$LOGN, A.T$DATE-5/24 t$DATE, A.T$PROC, A.T$REFCNTD, A.T$REFCNTU, '' T$CLOT, B.T$MCNO, C.T$DSCA, A.T$NORP, A.T$CUNI, A.T$SQNB, A.T$DLRP-5/24 T$DLRP
+          FROM	{0}.TTICOL042{1} A INNER JOIN
+          {0}.TTICOL011{1} B ON A.T$PDNO = B.T$PDNO INNER JOIN
+          {0}.TTCIBD001{1} C ON A.T$MITM = C.T$ITEM
+          WHERE 	A.T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="ActualizaRegistro_ReprintRegrind">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$NORP = '[:T$NORP]',
+          T$DLRP = sysdate+(5/24)
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="wrapRegrind_ActualizaRegistro">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$DELE = [:T$DELE]
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB_ConfirmedRegrind">
+        <stringSQL>
+          SELECT A.T$PDNO, A.T$SQNB, A.T$MITM, A.T$QTDL, A.T$CUNI, A.T$PONO, A.T$PRO1, B.T$DSCA, C.T$CWAR, A.T$DELE
+          FROM {0}.tticol042{1} A INNER JOIN
+          {0}.ttcibd001{1} B ON TRIM(A.T$MITM) = TRIM(B.T$ITEM) INNER JOIN
+          {0}.tticst001{1} C ON A.T$PDNO = C.T$PDNO AND A.T$PONO = C.T$PONO
+          WHERE TRIM(A.T$SQNB) = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+
+      <operationName name="actualizaRegistro_ConfirmedRegrind">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$LOG1 = '[:T$LOG1]',
+          T$DATC = sysdate+(5/24),
+          T$QTD1 = '[:T$QTD1]',
+          T$PRO1 = '[:T$PRO1]'
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB_LocatedRegrind">
+        <stringSQL>
+          SELECT A.T$PDNO, A.T$SQNB, A.T$MITM, A.T$QTDL, A.T$CUNI, A.T$PONO, A.T$PRO2, B.T$DSCA, C.T$CWAR
+          FROM {0}.tticol042{1} A INNER JOIN
+          {0}.ttcibd001{1} B ON TRIM(A.T$MITM) = TRIM(B.T$ITEM) INNER JOIN
+          {0}.tticst001{1} C ON A.T$PDNO = C.T$PDNO AND A.T$PONO = C.T$PONO
+          WHERE TRIM(A.T$SQNB) = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroXSQNB_FindLocation">
+        <stringSQL>
+          SELECT A.T$PDNO, SUBSTR(TRIM(A.T$SQNB),-2,2) T$SQNB, A.T$MITM, A.T$QTDL, A.T$CUNI, A.T$PONO, A.T$PRO2, B.T$DSCA, C.T$CWAR, D.T$LOCA
+          FROM {0}.tticol042{1} A INNER JOIN
+          {0}.ttcibd001{1} B ON TRIM(A.T$MITM) = TRIM(B.T$ITEM) INNER JOIN
+          {0}.tticst001{1} C ON A.T$PDNO = C.T$PDNO AND A.T$PONO = C.T$PONO INNER JOIN
+          {0}.twhwmd300{1} D ON C.T$CWAR = D.T$CWAR
+          WHERE TRIM(A.T$SQNB) = '[:T$SQNB]'
+          AND D.T$LOCA = '[:T$LOCA]'
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizaRegistro_LocationRegrind">
+        <stringSQL>
+          UPDATE {0}.tticol042{1}
+          SET T$LOG2 = '[:T$LOG2]',
+          T$DATU = sysdate+(5/24),
+          T$QTD2 = '[:T$QTD2]',
+          T$PRO2 = '[:T$PRO2]',
+          T$LOCA = '[:T$LOCA]'
+          WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+
+    </Module>
+    <Module name="tticol074">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {0}.tticol074{1} (T$REFCNTD, T$REFCNTU, T$CHEC, T$COMM, T$CWTT, T$DATE, T$HREA, T$LOGN, T$MESS, T$OPNO, T$PDNO, T$PROC)
+          VALUES (:T$REFCNTD, :T$REFCNTU, :T$CHEC, :T$COMM, :T$CWTT, to_date(:T$DATE, 'dd/mm/yyyy hh24:mi:ss'), :T$HREA, :T$LOGN, :T$MESS, :T$OPNO, :T$PDNO, :T$PROC)
+        </stringSQL>
+      </operationName>
+      <operationName name="eliminarRegistro">
+        <stringSQL>
+          DELETE FROM {0}.tticol074{1}
+          WHERE TRIM(UPPER(T$PDNO)) IN ([p1]) AND
+          T$DATE BETWEEN to_date('[p2]', 'mm/dd/yyyy hh24:mi') AND to_date('[p3]', 'mm/dd/yyyy hh24:mi')
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro">
+        <stringSQL>
+          UPDATE {0}.tticol074{1} SET
+          T$REFCNTD = :T$REFCNTD,
+          T$REFCNTU = :T$REFCNTU,
+          T$CHEC = :T$CHEC,
+          T$COMM = :T$COMM,
+          T$CWTT = :T$CWTT,
+          T$DATE = to_date(:T$DATE, 'dd/mm/yyyy hh24:mi:ss'),
+          T$HREA = :T$HREA,
+          T$LOGN = :T$LOGN,
+          T$MESS = :T$MESS,
+          T$OPNO = :T$OPNO,
+          T$PDNO = :T$PDNO,
+          T$PROC = :T$PROC
+          WHERE TRIM(UPPER(T$PDNO)) IN ([p1]) AND
+          T$DATE BETWEEN to_date('[p2]', 'mm/dd/yyyy hh24:mi:ss') AND to_date('[p3]', 'mm/dd/yyyy hh24:mi:ss')
+        </stringSQL>
+      </operationName>
+      <operationName name="ObtenerConsolidado">
+        <stringSQL>
+          SELECT t$pdno, t$opno, t$cwtt, SUM(t$hrea) t$hrea, t$comm, t$logn, min(t$date) t$date, t$proc, t$chec, t$mess, t$refcntd, t$refcntu
+          FROM {0}.tticol074{1}
+          where t$logn = 'Shoplogix' AND
+          TRIM(UPPER(T$PDNO)) IN ([p1]) AND
+          T$DATE BETWEEN to_date('[p2]', 'mm/dd/yyyy hh24:mi') AND to_date('[p3]', 'mm/dd/yyyy hh24:mi')
+          group by t$pdno, t$opno, t$cwtt, t$comm, t$logn, t$proc, t$chec, t$mess, t$refcntd, t$refcntu
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol075">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {0}.tticol075{1} (T$REFCNTD, T$REFCNTU, T$CHEC, T$COMM, T$CWTT, T$DATE, T$HREA, T$LOGN, T$MESS, T$OPNO, T$PDNO, T$PROC)
+          VALUES (:T$REFCNTD, :T$REFCNTU, :T$CHEC, :T$COMM, :T$CWTT, to_date(:T$DATE, 'dd/mm/yyyy hh24:mi:ss'), :T$HREA, :T$LOGN, :T$MESS, :T$OPNO, :T$PDNO, :T$PROC)
+        </stringSQL>
+      </operationName>
+      <operationName name="eliminarRegistro">
+        <stringSQL>
+          DELETE FROM {0}.tticol075{1}
+          WHERE TRIM(UPPER(T$PDNO)) IN ([p1]) AND
+          T$DATE BETWEEN to_date('[p2]', 'mm/dd/yyyy hh24:mi') AND to_date('[p3]', 'mm/dd/yyyy hh24:mi')
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol080">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$ORNO, T$PONO, T$ITEM, T$CWAR, T$QUNE, T$LOGN, T$DATE, T$PROC, T$REFCNTD, T$REFCNTU,T$CLOT)
+          VALUES(:T$ORNO, :T$PONO, :T$ITEM, :T$CWAR, :T$QUNE, :T$LOGN, sysdate+(5/24), :T$PROC, :T$REFCNTD, :T$REFCNTU, :T$CLOT)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro_Param">
+        <stringSQL>
+          UPDATE {2} SET
+          T$ORNO = :T$ORNO,
+          T$PONO = :T$PONO,
+          T$ITEM = :T$ITEM,
+          T$CWAR = :T$CWAR,
+          T$QUNE = ((T$QUNE) + :T$QUNE),
+          T$LOGN = :T$LOGN,
+          T$DATE = sysdate+(5/24),
+          T$PROC = :T$PROC,
+          T$REFCNTD = :T$REFCNTD,
+          T$REFCNTU = :T$REFCNTU,
+          T$CLOT = :T$CLOT
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistroImprimir_Param">
+        <stringSQL>
+          SELECT T$ORNO, T$PONO, T$ITEM, T$QUNE, T$CWAR, T$LOGN, T$DATE-5/24 T$DATE, T$PROC,
+          T$REFCNTD, T$REFCNTU, T$CLOT
+          FROM {2}
+          WHERE T$PONO = '[p1]' AND T$ORNO = '[p2]'
+          AND TRIM(T$ITEM) = '[p3]'
+          AND T$CWAR = '[p4]'
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistro_regrindM">
+        <stringSQL>
+          INSERT INTO {2} (T$ORNO, T$PONO, T$ITEM, T$CWAR, T$QUNE, T$LOGN, T$DATE, T$PROC, T$REFCNTD, T$REFCNTU,T$CLOT)
+          VALUES(:T$ORNO, :T$PONO, :T$ITEM, :T$CWAR, :T$QUNE, :T$LOGN, sysdate+(5/24), :T$PROC, :T$REFCNTD, :T$REFCNTU, :T$CLOT)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol090">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2}
+          (T$FPDN, T$TPDN, T$ITEM, T$CLOT, T$SRNO, T$QANA, T$PROC, T$LOGN, T$DATE, T$REFCNTD, T$REFCNTU)
+          VALUES(:T$FPDN, :T$TPDN, :T$ITEM, :T$CLOT, :T$SRNO, :T$QANA, :T$PROC, :T$LOGN, sysdate+(5/24), :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro_Param">
+        <stringSQL>
+          UPDATE {0}.tticol125{1} SET
+          T$FPDN = :T$FPDN,
+          T$ITEM = :T$ITEM,
+          T$QANA = :T$QANA,
+          T$LOGN = :T$LOGN,
+          T$DATE = :T$DATE,
+          T$PRIN = :T$PRIN,
+          T$CONF = :T$CONF
+        </stringSQL>
+      </operationName>
+      <operationName name="lineClearance_verificaOrdenes_Param">
+        <stringSQL>
+          SELECT RTRIM(cst001.t$pdno) orden
+          FROM  {0}.tticst001{1} cst001
+          INNER JOIN  {0}.ttisfc001{1} sfc001 ON cst001.t$pdno = sfc001.t$pdno
+          WHERE sfc001.t$osta IN('5','7','9') AND cst001.t$pdno='[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="lineCleareance_verificaItemInsert">
+        <stringSQL>
+          SELECT COUNT(T$ITEM) CANT
+          FROM {0}.tticol090{1}
+          WHERE TRIM(T$ITEM) = '[p1]' AND T$FPDN = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name="lineClearance_listaRegistrosOrden_Param">
+        <stringSQL>
+          SELECT DISTINCT ORDEN, '' ALMACEN, art.t$kltc LOTE, ARTICULO,
+          art.t$dsca DESCRIPCION, art.t$cuni UNIDAD, CANT_EST, ACT_CANT,
+          '' ISS_WAREH, 0 FACTOR, art.t$kltc IND_LOTE, '' ID
+          FROM {0}.tticst001{1} rec INNER JOIN
+          {0}.ttcibd001{1} art ON rec.t$sitm = art.t$item  INNER JOIN
+          {0}.ttcibd200{1} ibd200 ON art.t$item = ibd200.t$item INNER JOIN
+          {0}.ttisfc001{1} sfc ON rec.t$pdno = sfc.t$pdno RIGHT JOIN ( SELECT rec.t$pdno ORDEN,
+          rec.t$sitm ARTICULO, SUM(rec.t$ques) CANT_EST, sum(rec.t$qucs) ACT_CANT
+          FROM {0}.tticst001{1} rec
+          WHERE TRIM(rec.t$pdno)='[p1]'  GROUP BY rec.t$pdno, rec.t$sitm) TB1 ON TRIM(TB1.ARTICULO) = TRIM(rec.t$sitm)
+          WHERE sfc.t$osta in('5','7','9')
+          AND TRIM(rec.t$pdno)='[p1]'
+        </stringSQL>
+      </operationName>
+      <!--<operationName name="lineClearance_listaRegistrosOrden_Param">
+        <stringSQL>
+          SELECT rec.t$pdno ORDEN, rec.t$pono POSICION, rec.t$cwar ALMACEN, rec.t$clot LOTE, rec.t$sitm ARTICULO, 
+          art.t$dsca DESCRIPCION, art.t$cuni UNIDAD, rec.t$ques CANT_EST, rec.t$qucs ACT_CANT, 
+          rec.t$iswh ISS_WAREH, ibd200.t$oqmf FACTOR, art.t$kltc IND_LOTE, rec.ROWID ID 
+          FROM {0}.tticst001{1} rec INNER JOIN 
+          {0}.ttcibd001{1} art ON rec.t$sitm = art.t$item  INNER JOIN 
+          {0}.ttcibd200{1} ibd200 ON art.t$item = ibd200.t$item INNER JOIN 
+          {0}.ttisfc001{1} sfc ON rec.t$pdno = sfc.t$pdno 
+          WHERE sfc.t$osta in('5','7','9') AND rec.t$nnts = 1 AND  rec.t$qucs &gt; 0 
+          AND TRIM(rec.t$pdno)='[p1]'
+        </stringSQL>
+      </operationName>-->
+      <operationName name="lineClearance_verificaRegistrosOrden_Param">
+        <stringSQL>
+          SELECT t$pdno ORDEN, t$sitm DESCRIPCION
+          FROM {0}.tticst001{1}
+          WHERE TRIM(t$sitm) = '[p1]' AND TRIM(T$pdno) = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name="lineClearance_verificaRegistrosOrden_Param">
+        <stringSQL>
+          SELECT t$clot LOTE, t$item DESCRIPCION
+          FROM {0}.twhltc300{1}
+          WHERE TRIM(t$item) = '[p1]' AND
+          TRIM(t$clot) = '[p2]'
+          AND TRIM(t$orto) = '[p3]'
+        </stringSQL>
+      </operationName>
+      <operationName name="lineClearance_verificaLote_Param">
+        <stringSQL>
+          SELECT  t$clot LOTE, t$clot DESCRIPCION
+          FROM {0}.TWHINH225{1} INH225
+          WHERE t$oorg = 4 AND TRIM(t$orno) = '[p1]' AND TRIM(t$item) = '[p2]'
+          GROUP BY t$clot
+          <!--SELECT  t$clot LOTE, t$clot DESCRIPCION  
+          FROM {0}.twhltc300{1} ltc100 
+          WHERE t$otto = 5 AND TRIM(t$orto) = '[p1]' AND TRIM(t$item) = '[p2]'
+          GROUP BY t$clot-->
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol125">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO,T$PONO,T$ITEM,T$CWAR,T$CLOT,T$REQT,T$USER,
+          T$DATE,T$PRIN,T$CONF,T$REFCNTD,T$REFCNTU,T$MESS  )
+          VALUES (:T$PDNO,:T$PONO,:T$ITEM,:T$CWAR,:T$CLOT,:T$REQT,:T$USER,
+          sysdate+(5/24),:T$PRIN,:T$CONF,:T$REFCNTD,:T$REFCNTU,:T$MESS)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro_Param">
+        <stringSQL>
+          UPDATE {2} SET
+          T$PDNO = :T$PDNO,
+          T$PONO = :T$PONO,
+          T$ITEM = :T$ITEM,
+          T$CWAR = :T$CWAR,
+          T$CLOT = :T$CLOT,
+          T$PRIN = :T$PRIN,
+          T$CONF = :T$CONF,
+          T$MESS = :T$MESS
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosporConfirmar_Param">
+        <stringSQL>
+          SELECT t125.ROWID IDRECORD, T$PDNO, T$PONO pos, t125.T$ITEM articulo, T125.T$CWAR almacen, T$CLOT lot,
+          T$REQT retQty, t125.T$USER, t125.T$PRIN, t125.T$CONF, t125.T$REFCNTD, t125.T$REFCNTU, t125.T$MESS,
+          ART.T$DSCA DESCRIPCION, ART.T$CUNI UNIDAD
+          FROM {0}.tticol125{1} t125 LEFT JOIN {0}.ttcibd001{1} art ON TRIM(t125.T$ITEM) = TRIM(art.t$item)
+          WHERE T$PDNO ='[p1]' AND T$CONF = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosOrden_Param">
+        <stringSQL>
+          SELECT RTRIM(cst001.t$pdno) orden
+          FROM {0}.tticst001{1} cst001, {0}.ttisfc001{1} sfc001
+          WHERE cst001.t$pdno = sfc001.t$pdno and t$osta in('5','7')
+          AND cst001.t$pdno='[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosOrden_Param">
+        <stringSQL>
+          SELECT T125.*, art.t$cuni Unidad, ART.T$DSCA DESCRIPCION, T125.rowid ID
+          FROM {0}.tticol125{1} T125 LEFT JOIN {0}.ttcibd001{1} ART
+          ON TRIM(T125.T$ITEM) = TRIM(ART.t$item) WHERE (T125.T$PRIN IN(1, 2)) AND T125.T$PDNO ='[p1]'
+        </stringSQL>
+      </operationName>
+      <!--<operationName name="listaRegistrosOrden_ParamLast">
+        <stringSQL>
+          SELECT DISTINCT '' ID, rec.t$pdno Orden, 0 Pos, '' Almacen, Articulo,
+          art.t$dsca Descripcion, art.t$cuni Unidad, Cant, art.t$kltc Lote
+          FROM {0}.tticst001{1} rec LEFT JOIN {0}.ttcibd001{1} art on rec.t$sitm = art.t$item
+          LEFT JOIN {0}.ttisfc001{1} sfc ON rec.t$pdno = sfc.t$pdno
+          right JOIN
+          (SELECT rec.t$sitm Articulo, sum(rec.t$qucs) Cant
+          FROM {0}.tticst001{1} rec LEFT JOIN {0}.ttcibd001{1} art on rec.t$sitm = art.t$item
+          LEFT JOIN {0}.ttisfc001{1} sfc ON rec.t$pdno = sfc.t$pdno
+          WHERE sfc.t$osta in('5','7') AND rec.t$nnts = 1 AND sfc.t$pdno='[p1]' AND rec.t$qucs > 0
+          GROUP BY rec.t$sitm) TB1 ON TRIM(TB1.Articulo) = TRIM(art.t$item)
+          WHERE sfc.t$osta in('5','7') AND rec.t$nnts = 1 AND sfc.t$pdno='[p1]' AND rec.t$qucs > 0
+        </stringSQL>
+      </operationName>-->
+      <operationName name="listaRegistrosOrden_ParamLast">
+        <stringSQL>
+          SELECT rec.rowid ID, rec.t$pdno Orden, rec.t$pono Pos, rec.t$cwar Almacen, rec.t$sitm Articulo,
+          art.t$dsca Descripcion, art.t$cuni Unidad, TB1.Cantidad Cant, art.t$kltc Lote
+          FROM {0}.tticst001{1} rec
+          LEFT JOIN {0}.ttcibd001{1} art on rec.t$sitm = art.t$item
+          LEFT JOIN {0}.ttisfc001{1} sfc ON rec.t$pdno = sfc.t$pdno
+          INNER JOIN (select sfc.t$pdno Orden, cst001.t$sitm Articulo, SUM(cst001.t$qucs) Cantidad
+          from {0}.ttisfc001{1} sfc
+          inner join {0}.tticst001{1} cst001 on cst001.t$pdno = sfc.t$pdno
+          where sfc.t$osta in('5','7') and cst001.t$qucs &lt;&gt; 0 and sfc.t$pdno='[p1]'
+          group by sfc.t$pdno, cst001.t$sitm) TB1 ON TRIM(TB1.Articulo) = TRIM(rec.t$sitm)
+          WHERE sfc.t$osta in('5','7') AND rec.t$nnts = 1 AND sfc.t$pdno='[p1]' AND rec.t$qucs &gt; 0
+          ORDER BY rec.t$pono
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosOrden_ParamHis">
+        <stringSQL>
+          SELECT T125.T$PDNO, T125.T$PONO, T125.T$ITEM, T125.T$CWAR, T125.T$CLOT, T125.T$REQT, T125.T$USER,
+          TO_CHAR(((T125.T$DATE)-5/24), 'DD/MM/YYYY hh24:mi:ss') T$DATE, T125.T$PRIN,
+          T125.T$CONF, T125.T$REFCNTD, T125.T$REFCNTU, T125.T$MESS, art.t$cuni Unidad, ART.T$DSCA DESCRIPCION, T125.ROWID ID,  '125' TABLA
+          FROM {0}.tticol125{1} T125 LEFT JOIN {0}.ttcibd001{1} ART  ON TRIM(T125.T$ITEM) = TRIM(ART.t$item)
+          WHERE T125.T$PDNO = '[p1]'
+          UNION
+          SELECT T125.T$PDNO, T125.T$PONO, T125.T$ITEM, T125.T$CWAR, T125.T$CLOT, T125.T$REQT, T125.T$USER,
+          TO_CHAR(((T125.T$DATE)-5/24), 'DD/MM/YYYY hh24:mi:ss') T$DATE, T125.T$PRIN,
+          T125.T$CONF, T125.T$REFCNTD, T125.T$REFCNTU, T125.T$MESS, art.t$cuni Unidad, ART.T$DSCA DESCRIPCION, T125.ROWID ID,  '126' TABLA
+          FROM {0}.tticol126{1} T125 LEFT JOIN {0}.ttcibd001{1} ART ON TRIM(T125.T$ITEM) = TRIM(ART.t$item)
+          WHERE T125.T$PDNO = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosLoteItem_Param">
+        <stringSQL>
+          SELECT ltc100.t$clot lote
+          FROM {0}.twhltc100{1} ltc100
+          WHERE TRIM(ltc100.t$item) = '[p1]' AND TRIM(ltc100.t$clot) = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosLoteItem_Param">
+        <stringSQL>
+          SELECT ctl.T$CLOT lote
+          FROM {0}.twhltc300{1} ctl
+          WHERE TRIM(ctl.t$orto) = '[p3]' AND
+          TRIM(ctl.t$item) = '[p1]' AND
+          TRIM(ctl.t$clot) = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosPendConfItem_Param">
+        <stringSQL>
+          SELECT COUNT(1) CANT
+          FROM {0}.tticol125{1} ctl
+          WHERE  1 = 0 AND TRIM(ctl.t$pdno) = '[p1]' AND
+          TRIM(ctl.t$pono) = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name = "cantidadMaximaPorLote">
+        <stringSQL>
+          SELECT SUM(inh225.t$astk) cantMax
+          FROM {0}.twhinh225{1} inh225
+          WHERE inh225.t$oorg = 4 AND
+          TRIM(inh225.t$orno) = '[p1]' AND
+          inh225.t$pono = [p2] AND
+          TRIM(inh225.t$item) = '[p3]' AND
+          inh225.t$clot = '[p4]' AND
+          inh225.t$rlsd = 1
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol127">
+      <operationName name="listaRegistro_ObtieneAlmacen">
+        <stringSQL>
+          SELECT T$CWAR BODEGA
+          FROM {2}
+          WHERE UPPER(T$USER) = '[:T$USER]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttscol100">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} ( T$ORNO, T$ITEM, T$LOCA, T$CWAR, T$QDEL, T$LOGN, T$DATE, T$CONF,
+          T$CUSR, T$CDAT, T$MESS, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$ORNO, :T$ITEM, :T$LOCA, :T$CWAR, :T$QDEL, :T$LOGN, sysdate+(5/24),
+          :T$CONF, :T$CUSR, sysdate+(5/24), :T$MESS, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro_Param">
+        <stringSQL>
+          UPDATE {2} SET
+          T$ORNO = :T$ORNO,
+          T$ITEM = :T$ITEM,
+          T$LOCA = :T$LOCA,
+          T$CWAR = :T$CWAR,
+          T$QDEL = :T$QDEL,
+          T$CONF = :T$CONF,
+          T$CUSR = :T$CUSR,
+          T$CDAT = sysdate+(5/24),
+          T$MESS = :T$MESS,
+          T$REFCNTD = :T$REFCNTD,
+          T$REFCNTU = :T$REFCNTU
+        </stringSQL>
+      </operationName>
+      <operationName name="spareDelivery_listaRegistroItem_Param">
+        <stringSQL>
+          SELECT art.t$item ARTICULO, art.t$dsca DESCRIPCION, art.t$cuni UNIDAD, NVL(rec.t$qucs,0) ACT_CANT
+          FROM {0}.tticst001{1} rec RIGHT JOIN {0}.ttcibd001{1} art ON rec.t$sitm = art.t$item
+          WHERE TRIM(art.t$item) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="spareDelivery_listaRegistroUbicacion_Param">
+        <stringSQL>
+          SELECT T$LOCA LOCATION, T$CWAR WAREHOUSE
+          FROM {0}.twhwmd300{1}
+          WHERE LTRIM(RTRIM(T$LOCA)) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="spareDelivery_listaRegistrosOrdenParam">
+        <stringSQL>
+          SELECT TS100.T$ITEM ARTICULO, TS100.T$LOCA UBICACION, TS100.T$CWAR BODEGA, TS100.T$QDEL CANTIDAD,
+          DESCRIPCION, UNIDAD, TS100.ROWID ID
+          FROM {0}.ttscol100{1} TS100 INNER JOIN
+          (SELECT art.t$item ARTICULO, art.t$dsca DESCRIPCION, art.t$cuni UNIDAD
+          FROM {0}.tticst001{1} rec RIGHT JOIN {0}.ttcibd001{1} art
+          ON rec.t$sitm = art.t$item) art ON TS100.T$ITEM = ARTICULO
+          WHERE TRIM(TS100.t$orno) = '[p1]' AND TS100.t$conf = 2
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttssoc200">
+      <operationName name="spareDelivery_verificaOrdenes_Param">
+        <stringSQL>
+          SELECT t$orno, t$osta
+          FROM {0}.ttssoc200{1}
+          WHERE t$orno = '[p1]' AND t$osta IN(15,20)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttwhcol016">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$ZONE, T$LABL, T$ITEM, T$CWAR, T$CLOT, T$QTYR, T$LOGN, T$DATE, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$ZONE, :T$LABL, :T$ITEM, :T$CWAR, :T$CLOT, :T$QTYR, :T$LOGN ,sysdate+(5/24), :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarSecuenciaInsert">
+        <stringSQL>
+          UPDATE {0}.ttcmcs050{1}
+          SET t$ffno = (t$ffno + ROWNUM)
+          WHERE TRIM(T$NRGR) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaConsLabel_Param">
+        <stringSQL>
+          SELECT MAX(t$ffno) CONSEC
+          FROM {0}.ttcmcs050{1}
+          WHERE T$NRGR = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_listaConsLabel_Param">
+        <stringSQL>
+          SELECT T$ZONE, T$LABL, T$ITEM, T$CWAR, T$CLOT, T$QTYR, T$LOGN,
+          TO_CHAR(((T$DATE)-5/24), 'DD/MM/YYYY hh24:mi:ss') T$DATE, T$REFCNTD, T$REFCNTU
+          FROM {2}
+          WHERE TRIM(t$labl) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaBodega_Param">
+        <stringSQL>
+          SELECT t$cwar, t$dsca  DESCRIPCION
+          FROM {0}.ttcmcs003{1}
+          WHERE TRIM(t$cwar) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaItem_Param">
+        <stringSQL>
+          SELECT t$item, t$dsca DESCRIPCION, t$cuni UNIDAD, t$kltc LOTE
+          FROM {0}.ttcibd001{1}
+          WHERE TRIM(t$item) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaZona_Param">
+        <stringSQL>
+          SELECT t$zone, t$dsca  DESCRIPCION
+          FROM {0}.twhwmd310{1}
+          WHERE TRIM(T$ZONE) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaLote_Param">
+        <stringSQL>
+          SELECT ltc100.t$clot lote, '' DESCRIPCION
+          FROM {0}.twhltc100{1} ltc100
+          WHERE TRIM(ltc100.t$clot) = '[p1]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttwhcol017">
+      <operationName name="insertarRegistro">
+        <stringSQL>INSERT INTO {2} (T$LABL, T$SQNB, T$CWAR, T$ITEM, T$CLOT, T$QTDL, T$CUNI, T$LOGN, T$DATE, T$COUN, T$PROC, T$REFCNTD, T$REFCNTU, T$ZONE)             VALUES (:T$LABL, :T$SQNB, :T$CWAR, :T$ITEM, :T$CLOT, :T$QTDL, :T$CUNI, :T$LOGN, sysdate+(5/24), :T$COUN, :T$PROC, :T$REFCNTD, :T$REFCNTU, :T$ZONE)</stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaidLabel_Param">
+        <stringSQL>
+          SELECT NVL(MAX(T$SQNB),0) + 1 SQNB
+          FROM {2}
+          WHERE TRIM(T$LABL) = TRIM('[p1]')
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaConsBodega_Param">
+        <stringSQL>
+          SELECT T$COUN COUN
+          FROM {2}
+          WHERE TRIM(T$CWAR) = TRIM('[p1]')
+        </stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_listaConsLabel_Param">
+        <stringSQL></stringSQL>
+      </operationName>
+      <operationName name="TakeMaterialInv_verificaBodegaZone_Param">
+        <stringSQL>
+          SELECT T$CWAR
+          FROM {0}.twhwmd310{1} TWAR
+          WHERE TRIM(T$ZONE) = '[p1]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="twhcol018">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} ( T$TGID, T$ITEM, T$CLOT, T$QTDL, T$CUNI, T$REFCNTD,  T$REFCNTU)
+          VALUES (:T$TGID, :T$ITEM, :T$CLOT, :T$QTDL, :T$CUNI, :T$REFCNTD, :T$REFCNTU )
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro">
+        <stringSQL>
+          UPDATE {2} SET
+          T$TGID = :T$TGID,
+          T$ITEM = :T$ITEM,
+          T$CLOT = :T$CLOT,
+          T$QTDL = :T$QTDL,
+          T$CUNI = :T$CUNI,
+          T$REFCNTD = :T$REFCNTD
+          T$REFCNTU = :T$REFCNTU
+        </stringSQL>
+      </operationName>
+      <operationName name="labelRegrind_verificaTagId_Param">
+        <stringSQL>
+          SELECT NVL(MAX(substr(T$TGID, 11, 3)),0) CONS
+          FROM {2}
+          WHERE substr(T$TGID, 0, 9) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="labelRegrind_buscaTagId_Param">
+        <stringSQL>
+          SELECT T$TGID CONS
+          FROM {2}
+          WHERE T$TGID = '[p1]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttisfc001">
+      <operationName name="GenericProducts_listaRegistroOrden_Param">
+        <stringSQL>
+          SELECT sfc001.ROWID ID, RTRIM(sfc001.t$pdno) orden, TRIM(sfc001.t$mitm) item, TRIM(ibd001.t$dsca) desci,
+          TRIM(T$CUNI) unidad, T$UNIT, ibd003.T$CONV,
+          CASE TRIM(T$UNIT) WHEN 'UN' THEN ROUND(1/(ibd003.T$CONV * POWER(10, T$RPOW)))
+          ELSE T$CONV END FACTOR
+          FROM {0}.ttisfc001{1} sfc001
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttisfc010{1} sfc010 ON sfc010.t$pdno = sfc001.t$pdno
+          INNER JOIN {0}.ttcibd003{1} ibd003 ON ibd003.t$item = sfc001.t$mitm
+          WHERE sfc001.t$pdno='[p1]' AND sfc001.t$osta &lt; 8 AND TRIM(T$UNIT) = 'UN' ORDER BY sfc001.t$pdno
+        </stringSQL>
+      </operationName>
+    </Module>
+    <!--<Module name="tticol075">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {0}.tticol075{1} (T$PDNO, T$OPNO, T$CWTT, T$HREA, T$COMM, T$LOGN, T$DATE, T$PROC, T$CHEC, T$MESS)
+          VALUES (:T$PDNO, :T$OPNO, :T$CWTT, :T$HREA, :T$COMM, :T$LOGN, :T$DATE, :T$PROC, :T$CHEC, :T$MESS)
+        </stringSQL>
+      </operationName>
+    </Module>-->
+    <Module name="tticol130">
+      <operationName name="listarItems">
+        <stringSQL>
+          select trim(ibd001.t$item) item, trim(ibd001.t$dsca) descripcion
+          from {0}.ttcibd001{1} ibd001
+          where trim(ibd001.t$item) = '[p1]'
+          group by trim(ibd001.t$item), trim(ibd001.t$dsca)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol132">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {0}.tticol132{1} (T$BCDE, T$DATE, T$TYPE, T$ITEM, T$USER, T$STAT, T$MCNO, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$BCDE, sysdate+(5/24), :T$TYPE, :T$ITEM, :T$USER, :T$STAT, :T$MCNO, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="ObtenerBox">
+        <stringSQL>
+          SELECT col132.T$BCDE,
+          col132.T$DATE,
+          col132.T$TYPE,
+          col132.T$ITEM,
+          col132.T$USER,
+          col132.T$STAT,
+          col132.T$MCNO,
+          col132.T$REFCNTD,
+          col132.T$REFCNTU
+          FROM {0}.tticol132{1} col132
+          WHERE TRIM(upper(col132.t$bcde)) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="ValidarMaquina">
+        <stringSQL>
+          SELECT rou002.t$mcno
+          FROM {0}.ttirou002{1} rou002
+          WHERE TRIM(rou002.t$mcno) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listarItemByBarCode">
+        <stringSQL>
+          SELECT TRIM(UPPER(col132.t$item)) Item, TRIM(UPPER(ibd001.t$dsca)) descripcion
+          FROM {0}.tticol132{1} col132
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON TRIM(UPPER(ibd001.t$item)) = TRIM(UPPER(col132.t$item))
+          WHERE TRIM(UPPER(col132.t$bcde)) = '[p1]' AND col132.t$type = [p2]
+          GROUP BY TRIM(UPPER(col132.t$item)), ibd001.t$dsca
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="ttdcol524">
+      <operationName name="GetData">
+        <stringSQL>
+          SELECT DECODE(MAX(mcs050.t$ffno), NULL, 1, MAX(mcs050.t$ffno) + 1) AS OrderNumber,
+          sysdate AdjustmentDate,
+          col130.t$emno Employee,
+          col130.t$cwar Warehouse,
+          ibd001.t$item Item,
+          [p2] AS AdjustmentQuantity,
+          ibd001.t$cuni Unit,
+          col130.t$cdis AdjustmentReason,
+          1 AS Status,
+          ' ' AS AdjustmentBaanOrder,
+          10 AS AdjustmentBaanOrderLine
+          FROM {0}.tticol130{1} col130, {0}.ttcmcs050{1} mcs050, {0}.ttcibd001{1} ibd001
+          WHERE mcs050.t$nrgr = col130.t$nrgr AND
+          trim(ibd001.t$item) = '[p1]'
+          GROUP BY sysdate,
+          col130.t$emno,
+          col130.t$cwar,
+          ibd001.t$item,
+          ibd001.t$cuni,
+          col130.t$cdis
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarDatos">
+        <stringSQL>
+          INSERT INTO {0}.ttdcol524{1} ( t$orno$eam, t$odat, t$emno, t$cwar, t$item, t$vstk, t$stun, t$recd, t$esta, t$orno, t$pono, t$refcntd,t$refcntu)
+          VALUES (:t$orno$eam,sysdate+(5/24),:t$emno,:t$cwar,:t$item,:t$vstk,:t$stun,:t$recd,:t$esta,:t$orno,:t$pono,:t$refcntd,:t$refcntu)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarContadores">
+        <stringSQL>
+          UPDATE {0}.ttcmcs050{1} mcs050
+          SET mcs050.t$ffno = mcs050.t$ffno + 5
+          WHERE mcs050.t$nrgr IN (SELECT col130.t$nrgr
+          FROM {0}.tticol130{1} col130
+          GROUP BY col130.t$nrgr)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="twhcol002">
+      <operationName name="listaRegistro_ObtieneConteo">
+        <stringSQL>
+          SELECT T$COUN CONT
+          FROM {2}
+          WHERE TRIM(T$CWAR) = '[:T$CWAR]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="twhcol015">
+      <operationName name="listaRegistro_ObtieneSecuencia">
+        <stringSQL>
+          SELECT NVL(MAX(T$SQNB),0) SEQ
+          FROM {2}
+          WHERE T$CWAR = '[:T$CWAR]'
+          AND T$LOCA = '[:T$LOCA]'
+          AND T$PDNO = '[:T$PDNO]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_ObtieneSecuenciaNolote">
+        <stringSQL>
+          SELECT NVL(MAX(T$SQNB),0) SEQ
+          FROM {2}
+          WHERE T$CWAR = '[:T$CWAR]'
+          AND T$LOCA = '[:T$LOCA]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_ObtieneSecuenciaLOCATION">
+        <stringSQL>
+          SELECT NVL(MAX(T$SQNB),0) SEQ
+          FROM {2}
+          WHERE T$CWAR = '[:T$CWAR]'
+          AND T$PDNO = '[:T$PDNO]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_ObtieneSecuenciaNoloteLOCATION">
+        <stringSQL>
+          SELECT NVL(MAX(T$SQNB),0) SEQ
+          FROM {2}
+          WHERE T$CWAR = '[:T$CWAR]'
+          AND T$PDNO = '[:T$PDNO]'
+          AND TRIM(T$MITM) = '[:T$MITM]'
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$SQNB,T$CWAR,T$LOCA,T$PDNO,T$MITM,T$DSCA,T$QTDL,T$CUNI,T$DATE,T$MESS,T$PROC,T$COUN,T$REFCNTD,T$REFCNTU)
+          VALUES (:T$SQNB,:T$CWAR,:T$LOCA,:T$PDNO,:T$MITM,:T$DSCA,:T$QTDL,:T$CUNI,sysdate+(5/24),:T$MESS,:T$PROC,:T$COUN,:T$REFCNTD,:T$REFCNTU)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="twhcol072">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$SOUR,  T$ORNO,  T$PONO,  T$DWMS,  T$PWMS,  T$CWAR,  T$ITEM,  T$QANA,  T$CUNI,  T$CLOT,  T$INDT,  T$PRDT,  T$PROC,  T$RCNO,  T$RWMS,  T$LOGN,  T$ERRO,  T$SEQN,  T$REFCNTD,  T$REFCNTU)
+          VALUES (:T$SOUR, :T$ORNO, :T$PONO, :T$DWMS, :T$PWMS, :T$CWAR, :T$ITEM, :T$QANA, :T$CUNI, :T$CLOT, sysdate+(5/24), sysdate+(5/24), :T$PROC, :T$RCNO, :T$RWMS, :T$LOGN, :T$ERRO, :T$SEQN, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="twhinr140">
+      <operationName name="listaRegistros_ObtieneItem">
+        <stringSQL>
+          SELECT T$ITEM ID, TRIM(T$ITEM) ITEM
+          FROM {2}
+          WHERE T$LOCA = '[:T$LOCA]'
+          AND T$CLOT = '[:T$CLOT]'
+          GROUP BY T$ITEM
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="twhltc100">
+      <operationName name="listaRegistro_Clot">
+        <stringSQL>
+          SELECT T$ITEM ITEM
+          FROM {2}
+          WHERE T$CLOT = '[:T$CLOT]'
+          AND TRIM(T$ITEM) = '[:T$ITEM]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_SiExiste">
+        <stringSQL>
+          SELECT T$ITEM ITEM
+          FROM {2}
+          WHERE TRIM(T$CLOT) = '[:T$CLOT]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistros_ObtieneItem">
+        <stringSQL>
+          SELECT T$ITEM ID, TRIM(T$ITEM) ITEM
+          FROM {2}
+          WHERE T$CLOT = '[:T$CLOT]'
+          GROUP BY T$ITEM
+        </stringSQL>
+      </operationName>
+      
+      
+    </Module>
+    <Module name="twhwmd200">
+      <operationName name="listaRegistro_ObtieneAlmacenLocation">
+        <stringSQL>
+          SELECT T$CWAR ALM, T$SLOC LOC
+          FROM {2}
+          WHERE TRIM(T$CWAR) = '[:T$CWAR]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="twhwmd300">
+      <operationName name="listaRegistro_ObtieneAlmacen">
+        <stringSQL>
+          SELECT T$CWAR ALM
+          FROM {2}
+          WHERE TRIM(T$LOCA) = '[:T$LOCA]'
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistro_AlmacenUbicaion">
+        <stringSQL>
+          SELECT T$DSCA
+          FROM {2}
+          WHERE T$CWAR = '[:T$CWAR]'
+          AND T$LOCA = '[:T$LOCA]'
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="XMLGenerate">
+      <operationName name="listaRegistrosMaquinas">
+        <stringSQL>
+          SELECT col003.t$mcno
+          FROM {0}.tticol003{1} col003
+          WHERE col003.t$moee = 2
+          ORDER BY col003.t$mcno
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosItems">
+        <stringSQL>
+          SELECT 	col003.t$mcno,
+          sfc001.t$pdno Name,
+          sfc010.t$item,
+          sfc001.t$osta,
+          REPLACE(CONCAT(CONCAT(TRIM(sfc001.t$mitm), ' - '), ibd001.t$dsca), '&amp;', 'y') AS Filter1,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN ROUND((sfc001.t$qrdr) *(1/(ibd003.T$CONV * POWER(10, T$RPOW)))) ELSE sfc001.t$qrdr END AS ProductionQtyExpected,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 'UN' ELSE ibd001.t$cuni END AS Filter3,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN ROUND((1/(ibd003.T$CONV * POWER(10, T$RPOW))), 0) ELSE 1 END Filter4,
+          REPLACE(TRUNC(CASE col020.t$camo WHEN 0 THEN
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 1
+          ELSE DECODE(TRIM(ibd001.t$dscb), 'PP', 0.92, 'PS', 1.04, 0) * col020.t$cali * col020.t$anch
+          END
+          ELSE
+          col020.t$camo
+          END, 8), ',', '.') AS CycleFactor,
+          CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END t$camo,
+          TRIM(ibd001.t$cuni) As Unidad,
+          TRUNC((sfc010.t$prte / 3600), 8) prte,
+          ROW_NUMBER() OVER (ORDER BY col003.t$mcno) AS AUTOINT,
+          com100.t$nama,
+          col020.t$coba,
+          sfc001.t$qrdr,
+          ibd003.T$CONV,
+          T$RPOW,
+          sfc010.t$prte,
+          col003.t$ccos,
+          REPLACE(TRUNC((CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END) / ((sfc010.t$prte * (1/(ibd003.T$CONV * POWER(10, T$RPOW))) / 3600)), 8), ',', '.') AS RunspeedExpected,
+          REPLACE(TRUNC((CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END) / ((sfc010.t$prte * (1/(ibd003.T$CONV * POWER(10, T$RPOW))) / 3600)), 8), ',', '.') AS JobMaxRunRate,
+          REPLACE(TRUNC((1/(ibd003.T$CONV * POWER(10, T$RPOW))), 8), ',', '.') AS UnidadesCaja,
+          1 AS InvCycleFactor
+          FROM {0}.tticol003{1} col003
+          INNER JOIN {0}.ttisfc010{1} sfc010 ON col003.t$mcno = sfc010.t$mcno
+          INNER JOIN {0}.ttisfc001{1} sfc001 ON sfc001.t$mitm = sfc010.t$item AND sfc001.t$pdno = sfc010.t$pdno
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttcibd003{1} ibd003 ON ibd003.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttccol020{1} col020 ON col020.t$item = ibd003.t$item AND ibd003.t$unit = 'UN'
+          INNER JOIN {0}.ttccom100{1} com100 ON col020.t$ofbp = com100.t$bpid
+          WHERE col003.t$moee = 2 AND
+          sfc001.t$osta &lt;= 7 AND
+          col003.t$mcno IN ([p1])
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosItems">
+        <stringSQL>
+          SELECT 	col003.t$mcno,
+          sfc001.t$pdno Name,
+          sfc010.t$item,
+          sfc001.t$osta,
+          REPLACE(CONCAT(CONCAT(TRIM(sfc001.t$mitm), ' - '), ibd001.t$dsca), '&amp;', 'y') AS Filter1,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN ROUND((sfc001.t$qrdr)) ELSE sfc001.t$qrdr END AS ProductionQtyExpected,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 'UN' ELSE ibd001.t$cuni END AS Filter3,
+          1 AS Filter4,
+          REPLACE(TRUNC((CASE col020.t$camo WHEN 0 THEN
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 1
+          ELSE DECODE(TRIM(ibd001.t$dscb), 'PP', 0.92, 'PS', 1.04, 0) * col020.t$cali * col020.t$anch * col020.t$nuti
+          END
+          ELSE
+          col020.t$camo
+          END) / 1000, 8), ',', '.') AS CycleFactor,
+          CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END t$camo,
+          TRIM(ibd001.t$cuni) As Unidad,
+          TRUNC((sfc010.t$prte / 3600), 8) prte,
+          ROW_NUMBER() OVER (ORDER BY col003.t$mcno) AS AUTOINT,
+          com100.t$nama,
+          col020.t$coba,
+          sfc001.t$qrdr,
+          1 AS T$CONV,
+          1 AS T$RPOW,
+          sfc010.t$prte,
+          col003.t$ccos,
+          REPLACE(TRUNC((CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END) / ((sfc010.t$prte / 3600)), 8), ',', '.') AS RunspeedExpected,
+          REPLACE(TRUNC((CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END) / ((sfc010.t$prte / 3600)), 8), ',', '.') AS JobMaxRunRate,
+          1 AS UnidadesCaja,
+          1 AS InvCycleFactor
+          FROM {0}.tticol003{1} col003
+          INNER JOIN {0}.ttisfc010{1} sfc010 ON col003.t$mcno = sfc010.t$mcno
+          INNER JOIN {0}.ttisfc001{1} sfc001 ON sfc001.t$mitm = sfc010.t$item AND sfc001.t$pdno = sfc010.t$pdno
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttccol020{1} col020 ON col020.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttccom100{1} com100 ON col020.t$ofbp = com100.t$bpid
+          WHERE col003.t$moee = 2 AND
+          sfc001.t$osta &lt;= 7 AND
+          col003.t$mcno IN ([p1])
+        </stringSQL>
+      </operationName>
+
+      <operationName name="listaRegistrosItemsUSA">
+        <stringSQL>
+          SELECT 	col003.t$mcno,
+          sfc001.t$pdno Name,
+          sfc010.t$item,
+          sfc001.t$osta,
+          REPLACE(CONCAT(CONCAT(TRIM(sfc001.t$mitm), ' - '), ibd001.t$dsca), '&amp;', 'y') AS Filter1,
+          sfc001.t$qrdr AS ProductionQtyExpected,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 'UN' ELSE ibd001.t$cuni END AS Filter3,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN ROUND((1/(ibd003.T$CONV * POWER(10, T$RPOW))), 0) ELSE 1 END Filter4,
+          REPLACE(TRUNC(
+          CASE col020.t$camo WHEN 0 THEN
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 1
+          ELSE DECODE(TRIM(ibd001.t$dscb), 'PP', 0.92, 'PS', 1.04, 0) * col020.t$cali * col020.t$anch
+          END
+          ELSE
+          col020.t$camo
+          END / CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN ROUND((1/(ibd003.T$CONV * POWER(10, T$RPOW))), 0) ELSE 1 END, 8), ',', '.') AS CycleFactor,
+          CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END t$camo,
+          TRIM(ibd001.t$cuni) As Unidad,
+          TRUNC((sfc010.t$prte / 3600), 8) prte,
+          ROW_NUMBER() OVER (ORDER BY col003.t$mcno) AS AUTOINT,
+          com100.t$nama,
+          col020.t$coba,
+          sfc001.t$qrdr,
+          ibd003.T$CONV,
+          T$RPOW,
+          sfc010.t$prte,
+          col003.t$ccos,
+          rou102.t$exin AS RunspeedExpected,
+          rou102.t$exin AS JobMaxRunRate,
+          REPLACE(TRUNC((1/(ibd003.T$CONV * POWER(10, T$RPOW))), 8), ',', '.') AS UnidadesCaja,
+          1 AS InvCycleFactor
+          FROM {0}.tticol003{1} col003
+          INNER JOIN {0}.ttisfc010{1} sfc010 ON col003.t$mcno = sfc010.t$mcno
+          INNER JOIN {0}.ttisfc001{1} sfc001 ON sfc001.t$mitm = sfc010.t$item AND sfc001.t$pdno = sfc010.t$pdno
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttcibd003{1} ibd003 ON ibd003.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttccol020{1} col020 ON col020.t$item = ibd003.t$item AND ibd003.t$unit = 'UN'
+          INNER JOIN {0}.ttccom100{1} com100 ON col020.t$ofbp = com100.t$bpid
+          INNER JOIN {0}.ttirou102{1} rou102 ON rou102.t$mitm = sfc010.t$item AND rou102.t$mcno = sfc010.t$mcno
+          WHERE col003.t$moee = 2 AND
+          sfc001.t$osta &lt;= 7 AND
+          col003.t$mcno IN ([p1])
+        </stringSQL>
+      </operationName>
+      <operationName name="listaRegistrosItemsUSA">
+        <stringSQL>
+          SELECT 	col003.t$mcno,
+          sfc001.t$pdno Name,
+          sfc010.t$item,
+          sfc001.t$osta,
+          REPLACE(CONCAT(CONCAT(TRIM(sfc001.t$mitm), ' - '), ibd001.t$dsca), '&amp;', 'y') AS Filter1,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN ROUND((sfc001.t$qrdr)) ELSE sfc001.t$qrdr END AS ProductionQtyExpected,
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 'UN' ELSE ibd001.t$cuni END AS Filter3,
+          1 AS Filter4,
+          CASE col020.t$camo WHEN 0 THEN
+          CASE TRIM(ibd001.t$cuni) WHEN 'CJ' THEN 1
+          ELSE DECODE(TRIM(ibd001.t$dscb), 'PP', 0.92, 'PS', 1.04, 0) * col020.t$cali * col020.t$anch
+          END
+          ELSE
+          col020.t$camo
+          END AS CycleFactor,
+          CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END t$camo,
+          TRIM(ibd001.t$cuni) As Unidad,
+          TRUNC((sfc010.t$prte / 3600), 8) prte,
+          ROW_NUMBER() OVER (ORDER BY col003.t$mcno) AS AUTOINT,
+          com100.t$nama,
+          col020.t$coba,
+          sfc001.t$qrdr,
+          1 AS T$CONV,
+          1 AS T$RPOW,
+          sfc010.t$prte,
+          col003.t$ccos,
+          REPLACE(TRUNC((CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END) / ((sfc010.t$prte / 3600)), 8), ',', '.') AS RunspeedExpected,
+          REPLACE(TRUNC((CASE col020.t$camo WHEN 0 THEN 1 ELSE col020.t$camo END) / ((sfc010.t$prte / 3600)), 8), ',', '.') AS JobMaxRunRate,
+          1 AS UnidadesCaja,
+          1 AS InvCycleFactor
+          FROM {0}.tticol003{1} col003
+          INNER JOIN {0}.ttisfc010{1} sfc010 ON col003.t$mcno = sfc010.t$mcno
+          INNER JOIN {0}.ttisfc001{1} sfc001 ON sfc001.t$mitm = sfc010.t$item AND sfc001.t$pdno = sfc010.t$pdno
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttccol020{1} col020 ON col020.t$item = sfc001.t$mitm
+          INNER JOIN {0}.ttccom100{1} com100 ON col020.t$ofbp = com100.t$bpid
+          WHERE col003.t$moee = 2 AND
+          sfc001.t$osta &lt;= 7 AND
+          col003.t$mcno IN ([p1])
+        </stringSQL>
+      </operationName>
+
+      <operationName name="xmlColumns">
+        <!--<stringSQL>
+          Name, MachineID, Filter1, Filter2, Filter3, Filter4, CycleFactor, RunspeedExpected, JobMaxRunRate
+        </stringSQL>-->
+        <stringSQL>
+          Name, MachineID, Filter1, ProductionQtyExpected, Filter3, Filter4, CycleFactor, RunspeedExpected, JobMaxRunRate, InvCycleFactor
+        </stringSQL>
+      </operationName>
+    </Module>
+  </Modules>
+</DALResources>

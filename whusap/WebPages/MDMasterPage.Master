@@ -1,0 +1,100 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MDMasterPage.master.cs" Inherits="whusap.MDMasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <style type="text/css">
+      .style2
+      {
+        color: Black;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        text-align: Left;
+        height: 10px;
+       }
+       .errorMsg
+       {
+         color: Black;
+         font-weight: bold;
+         font-size: medium;
+       }
+        .HeaderGrid
+        {
+            background-color:Red;
+            color: White;
+            font-family: Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            font-style: normal;
+            text-align: Left;
+            height: 10px;
+        }       
+        .tableDefault4
+        {
+            width: 60%;
+            height: 30%;
+        }        
+        .style3
+        {
+            height: 37px;
+        }
+    </style>        
+    <title></title>
+    <asp:ContentPlaceHolder ID="Encabezado" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+ 
+<body >
+
+ <form id="formHeaderMaster" runat="server">
+   <div style="background-color:SkyBlue">
+   <table style="width: 35%" >
+     <tr>
+       <td><img alt="" src="../../images/logophoenix_s.jpg" /></td>
+       <td></td>
+       <td>
+           <h3><asp:Label ID="lblPageTitle" runat="server" Text="Label"></asp:Label></h3>
+         </td>
+     </tr>
+   </table>
+   <br />
+   <div style="height:30px; vertical-align:sub; position: relative;" >
+     <span><asp:Button ID="btnSessionOut" runat="server" Text="Close Session" 
+           Font-Bold="True" Font-Names="Tahoma" Font-Size="10pt" 
+           onclick="btnSessionOut_Click" /></span>
+     <span><asp:Button ID="btnMainMenu" runat="server" Text="Main Menu" 
+           Font-Bold="True" Font-Names="Tahoma" Font-Size="10pt" 
+           onclick="btnMainMenu_Click" /></span>   
+   </div>
+
+   <div style="background-color:SkyBlue" class="style3">
+     <table align="left" border="0" cellspacing="0" 
+          cellpadding="0" style="vertical-align: baseline;">
+        <tr>
+          <td class="style2"><b>User </b>:</td>
+          <td class="style2" colspan="2"><b><asp:Label ID="lblUserLogin" runat="server" Text="Label"></asp:Label></b></td>
+        </tr>
+        <tr>
+          <td class="style2"><b>Name </b>:</td>
+          <td class="style2" colspan="2"><b><asp:Label ID="lblUserName" runat="server" Text="Label"></asp:Label></b></td>
+       </tr>
+     </table> 
+
+   </div>
+   </div>
+   <br />
+   <br />
+
+    <div style="vertical-align: bottom; color:#D6DCE4" >
+        <asp:ContentPlaceHolder ID="Cuerpo" runat="server">
+
+        
+
+        
+        </asp:ContentPlaceHolder>
+    </div>
+  </form>
+</body>
+</html>

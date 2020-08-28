@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:13798/ServicioPrueba.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/whusa.Entidades" />
+  <xs:element name="enviaDatos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ArrayOfEnt_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfEnt_tticol125">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ent_tticol125" nillable="true" type="tns:Ent_tticol125" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Ent_tticol125">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="pdno" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="pono" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="item" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="cwar" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="clot" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="reqt" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="date" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="prin" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="conf" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="refcntd" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="refcntu" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="mess" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="idrecord" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="enviaDatosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="enviaDatosResult" type="tns:ArrayOfEnt_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiaEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/whusa.Entidades" minOccurs="0" name="parametros" nillable="true" type="q1:Ent_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CambiaEstadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/whusa.Entidades" minOccurs="0" name="CambiaEstadoResult" nillable="true" type="q2:ArrayOfEnt_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recuperarCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/whusa.Entidades" minOccurs="0" name="parametros" nillable="true" type="q3:Ent_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="recuperarClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/whusa.Entidades" minOccurs="0" name="recuperarClienteResult" nillable="true" type="q4:ArrayOfEnt_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listaRegistrosOrden_Param">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/whusa.Entidades" minOccurs="0" name="parametros" nillable="true" type="q5:Ent_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listaRegistrosOrden_ParamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="listaRegistrosOrden_ParamResult" nillable="true">
+          <xs:complexType>
+            <xs:annotation>
+              <xs:appinfo>
+                <ActualType Name="DataTable" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xs:appinfo>
+            </xs:annotation>
+            <xs:sequence>
+              <xs:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+              <xs:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/whusa.Entidades" minOccurs="0" name="parametros" nillable="true" type="q6:Ent_tticol125" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

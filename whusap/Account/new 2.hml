@@ -1,0 +1,245 @@
+<Module name="tticol042">
+      <operationName name="ConsultarPorPalletID">
+        <stringSQL>
+          SELECT  col042.T$PRO1 PROC, col042.T$MITM ITEM, ibd001.T$DSCA DSCA, col422.T$ACQT ACQT, col042.T$CUNI CUNI, col042.T$DELE STAT
+          FROM  {2} col042
+          INNER JOIN {0}.ttcibd001{1} ibd001 ON ibd001.T$ITEM = col042.T$MITM
+          LEFT JOIN {0}.tticol242{1} col242 ON col242.T$PDNO = col042.T$PDNO AND col242.T$SQNB = col042.T$SQNB
+          WHERE col042.T$SQNB = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="SecuenciaMayor042">
+        <stringSQL>
+          select * from (select * from BAAN.tticol042140 where T$SQNB LIKE '%[:T$SQNB]-C%' order by T$SQNB desc) where rownum = 1
+        </stringSQL>
+      </operationName>
+      <operationName name="ActualizarUbicacionTicol422">
+        <stringSQL>
+          UPDATE {0}.tticol422{1} SET T$CWAF = '[:T$CWAT]', T$ACLO = '[:T$ACLO]' WHERE T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="ActualizacionPalletId">
+        <stringSQL>
+          UPDATE {2} SET T$DELE = '[:STAT]' WHERE T$SQNB = '[p1]'  --13. To Delete
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$QTDL, T$CUNI, T$LOG1,
+          T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP,
+          T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$SQNB, :T$PROC, :T$LOGN, sysdate+5/24, :T$MITM, :T$QTDL, :T$CUNI, :T$LOG1,
+          sysdate+5/24, :T$QTD1, :T$PRO1, :T$LOG2, sysdate+5/24, :T$QTD2, :T$PRO2, :T$LOCA, :T$NORP,
+          sysdate+5/24, :T$DELE, :T$LOGD, sysdate+5/24, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistroAux">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$QTDL, T$CUNI, T$LOG1,
+          T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP,
+          T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU)
+          VALUES ('[:T$PDNO]', '[:T$SQNB]', '[:T$PROC]', '[:T$LOGN]', sysdate+5/24, '[:T$MITM]', '[:T$QTDL]', '[:T$CUNI]', '[:T$LOG1]',
+          sysdate+5/24, '[:T$QTD1]', '[:T$PRO1]', '[:T$LOG2]', sysdate+5/24, '[:T$QTD2]', '[:T$PRO2]', '[:T$LOCA]', '[:T$NORP]',
+          sysdate+5/24, '[:T$DELE]', '[:T$LOGD]', sysdate+5/24, '[:T$REFCNTD]', '[:T$REFCNTU]')
+        </stringSQL>
+      </operationName>
+      <operationName name="insertarRegistroSimple">
+        <stringSQL>
+          INSERT INTO {2} (T$PDNO, T$SQNB, T$PROC, T$LOGN, T$DATE, T$MITM, T$QTDL, T$CUNI, T$LOG1,
+          T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA, T$NORP,
+          T$DLRP, T$DELE, T$LOGD, T$DATD, T$REFCNTD, T$REFCNTU)
+          VALUES (:T$PDNO, :T$SQNB, :T$PROC, :T$LOGN, sysdate+5/24, :T$MITM, :T$QTDL, :T$CUNI, :T$LOG1,
+          sysdate+5/24, :T$QTD1, :T$PRO1, :T$LOG2, sysdate+5/24, :T$QTD2, :T$PRO2, :T$LOCA, :T$NORP,
+          sysdate+5/24, :T$DELE, :T$LOGD, sysdate+5/24, :T$REFCNTD, :T$REFCNTU)
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizarRegistro_Param">
+        <stringSQL>
+          UPDATE {2} SET
+          T$PDNO = :T$PDNO,
+          T$SQNB = :T$SQNB,
+          T$PROC = :T$PROC,
+          T$LOGN = :T$LOGN,
+          T$MITM = :T$MITM,
+          T$QTDL = :T$QTDL,
+          T$CUNI = :T$CUNI,
+          T$LOG1 = :T$LOG1,
+          T$QTD1 = :T$QTD1,
+          T$PRO1 = :T$PRO1,
+          T$LOG2 = :T$LOG2,
+          T$QTD2 = :T$QTD2,
+          T$PRO2 = :T$PRO2,
+          T$LOCA = :T$LOCA,
+          T$NORP = :T$NORP,
+          T$DELE = :T$DELE,
+          T$LOGD = :T$LOGD,
+          T$REFCNTD = :T$REFCNTD,
+          T$REFCNTU = :T$REFCNTU
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabel_generaSecuenciaOrden">
+        <stringSQL>
+          SELECT LPAD(NVL(SUBSTR(MAX(t$sqnb),INSTR(MAX(t$sqnb), '-', 1) + 1,
+          LENGTH(MAX(t$sqnb)) - INSTR(MAX(t$sqnb), '-', 1)), '0') + 1, 3, '0') SECUENCIA,
+          INSTR(MAX(t$sqnb), '-', 1) POSICION, MAX(t$sqnb) secuence
+          FROM {2} WHERE t$pdno = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabel_tiempoGrabacion">
+        <stringSQL>
+          SELECT NVL(COUNT(t$sqnb),'0') orden
+          FROM {2}
+          WHERE t$pdno = '[p1]'
+          AND t$date BETWEEN ((sysdate+5/24) - ([p2]/24/60))
+          AND (sysdate+5/24)
+        </stringSQL>
+      </operationName>
+      <operationName name="invLabel_registroImprimir_Param">
+        <stringSQL>
+          SELECT T$PDNO ORDEN, T$SQNB SECUENCIA, T$MITM ITEM, T$QTDL PESO, T$LOGN USUARIO, (T$DATE-5/24) FECHA
+          FROM {2}
+          WHERE TRIM(t$pdno) = '[p1]' AND TRIM(t$sqnb) = '[p2]'
+        </stringSQL>
+      </operationName>
+      <operationName name="wrapValidation_listaRegistroSec_param">
+        <stringSQL>
+          SELECT T$PDNO ORDEN, T$SQNB SECUENCIA, T$MITM ITEM, T$QTDL PESO, T$LOGN USUARIO, T$DATE FECHA,
+          T$PROC, T$CUNI, T$LOG1, T$DATC, T$QTD1, T$PRO1, T$LOG2, T$DATU, T$QTD2, T$PRO2, T$LOCA,
+          T$NORP, T$DLRP, T$DELE, T$LOGD, T$DATD, T$CUNI UNIDAD, ROWID IDRECORD
+          FROM {2}
+          WHERE TRIM(t$sqnb) = '[p1]'
+        </stringSQL>
+      </operationName>
+      <operationName name="validarRegistroByPalletId">
+        <stringSQL>
+          SELECT ticol042.T$PDNO AS LOT,ticol042.T$MITM AS ITEM, ticol042.T$QTDL AS QUANTITY, ticol042.T$CUNI AS UNIDAD, ticol042.T$PRO1 AS PRO1, ticol042.T$PRO2 AS PRO2,T$DRPT, ticol422.T$URPT as URPT, ticol422.T$ACQT as ACQT, ticol422.T$CWAF as CWAF, ticol422.T$CWAT as CWAT, ticol422.T$ACLO as ACLO, ticol422.T$REFCNTD as REFCNTD, ticol422.T$REFCNTU as REFCNTU FROM {2} ticol042
+          inner join {0}.tticol422{1} ticol422 on ticol422.T$SQNB = ticol042.T$SQNB
+          WHERE ticol042.T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizaRegistroSugUbicaciones">
+        <stringSQL>
+          UPDATE {2} SET T$PRO2 = 1, T$LOG2 =  '[:T$USER]',
+          T$DATU = sysdate+5/24, T$QTD2 = [:T$QTD2],
+          T$LOCA = '[:T$LOCA]',
+          T$DELE = '[:T$DELE]'
+          WHERE T$PDNO = '[:T$PDNO]'
+          AND  T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizaRegistroConfirmReceipt">
+        <stringSQL>
+          UPDATE {2} SET T$PROC = 1, T$LOG1 = '[:T$LOG1]'
+          , T$DATC = sysdate+5/24, T$QTD1 = [:T$QTD1]
+          , T$PRO1 = 1
+          , T$DELE = 7
+          WHERE T$PDNO = '[:T$PDNO]' AND T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="findBySqnbPdnoAndQtdl">
+        <stringSQL>
+          SELECT T$PDNO
+          FROM {2}
+          WHERE TRIM(T$PDNO) = '[:T$PDNO]' AND TRIM(T$SQNB) = '[:T$SQNB]'
+          AND T$QTDL = [:T$QTDL]
+        </stringSQL>
+      </operationName>
+      <operationName name="countRecordsByPdnoAndDele">
+        <stringSQL>
+          SELECT COUNT(T$PDNO) AS PDNOS
+          FROM {2}
+          WHERE T$DELE = '[:T$DELE]' AND T$PDNO = '[:T$PDNO]'
+        </stringSQL>
+      </operationName>
+      <operationName name="selectMaxSqnbByPdno">
+        <stringSQL>
+          SELECT
+          T$SQNB AS SQNB, SYSDATE AS FECHA, T$DELE AS DELE
+          FROM {2}
+          WHERE T$PDNO = '[:T$PDNO]'
+          AND T$SQNB = (SELECT MAX(T$SQNB) FROM {2} WHERE T$PDNO = '[:T$PDNO]')
+        </stringSQL>
+      </operationName>
+      <operationName name="selectDatesBySqnbPdno">
+        <stringSQL>
+          SELECT T$QTDL QTDL, TRUNC(((CURRENT_DATE) - T$DATE)*(60*24)) + 300 DIF_MIN,
+          CURRENT_DATE FEC_HOY, T$DATE FEC_ANT
+          FROM {2}
+          WHERE T$PDNO = '[:T$PDNO]' AND T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="actualizaRegistroAnuncioOrd">
+        <stringSQL>
+          UPDATE {2} SET T$PROC = 1, T$QTDL = [:T$QTDL] WHERE T$PDNO = '[:T$PDNO]' AND T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="consultambpl">
+        <stringSQL>
+          SELECT T$MBPL AS MBPL FROM {0}.tticol000{1}
+        </stringSQL>
+      </operationName>
+      <operationName name="findBySqnbPdnoLabelPallet">
+        <stringSQL>
+          SELECT
+          ticol042.T$PDNO AS PDNO, ticol042.T$SQNB AS SQNB,
+          ticol042.T$QTDL AS QTDL, ticol042.T$DATE - 5/24 AS FECHA,
+          ticol042.T$MITM AS MITM, ttcibd001.T$DSCA AS DSCA,
+          ttcibd003.T$CONV AS CONV, ttcibd001.T$CUNI AS CUNI,
+          ttisfc010.T$MCNO AS MCNO, ticol042.T$LOGN AS LOGN,
+          ticol042.T$NORP AS NORP,
+          ticol042.T$DELE AS DELE, CONCAT(CONCAT(TRIM(tccom130.T$NAME), ' - '),tccom130.T$CSTE)  AS NAME
+          FROM {2} ticol042
+          INNER JOIN {0}.ttisfc001{1} tisfc001 ON tisfc001.T$PDNO = ticol042.T$PDNO
+          INNER JOIN {0}.ttcmcs003{1} tcmccs003 ON tcmccs003.T$CWAR = tisfc001.T$CWAR
+          INNER JOIN {0}.ttccom130{1} tccom130 ON tccom130.T$CADR = tcmccs003.T$CADR
+          INNER JOIN {0}.ttcibd001{1} ttcibd001 ON ttcibd001.T$ITEM = ticol042.T$MITM
+          INNER JOIN {0}.ttisfc010{1} ttisfc010 ON ttisfc010.T$PDNO = ticol042.T$PDNO
+          LEFT JOIN {0}.ttcibd003{1} ttcibd003 ON ttcibd003.T$BASU = ttcibd001.T$CUNI AND ttcibd003.T$ITEM = ttcibd001.T$CUNI AND ttcibd003.T$UNIT = 'PLT'
+          WHERE ticol042.T$PDNO = '[:T$PDNO]' AND ticol042.
+          T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="findRecordBySqnbRejectedPlant">
+        <stringSQL>
+          SELECT
+          ticol042.T$PDNO AS PDNO, ticol042.T$SQNB AS SQNB,
+          ticol042.T$MITM AS MITM, tcibd001.T$DSCA AS DSCA,
+          tcibd001.T$CUNI AS CUNI, ticol042.T$QTDL AS QTDL,
+          ticol042.T$DELE AS DELE, ticol042.T$PRO1 AS PRO1,
+          ticol042.T$PROC AS PROC, ticol422.T$CWAF AS CWAR
+          FROM {2} ticol042
+          LEFT JOIN {0}.ttcibd001{1} tcibd001 ON tcibd001.T$ITEM = ticol042.T$MITM
+          LEFT JOIN {0}.tticol422{1} ticol422 ON ticol422.T$SQNB = ticol042.T$SQNB
+          WHERE ticol042.T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+	<operationName name="findRecordBySqnbRejectedPlantMRBRejection">
+        <stringSQL>
+          SELECT
+          ticol042.T$PDNO AS PDNO, ticol042.T$SQNB AS SQNB,
+          ticol042.T$MITM AS MITM, tcibd001.T$DSCA AS DSCA,
+          tcibd001.T$CUNI AS CUNI, ticol042.T$QTDL AS QTDL,
+          ticol042.T$DELE AS DELE, ticol042.T$PRO1 AS PRO1,
+          ticol042.T$PROC AS PROC, ticol422.T$CWAF AS CWAR
+          FROM {2} ticol042
+          LEFT JOIN {0}.ttcibd001{1} tcibd001 ON tcibd001.T$ITEM = ticol042.T$MITM
+          LEFT JOIN {0}.tticol422{1} ticol422 ON ticol422.T$SQNB = ticol042.T$SQNB
+          WHERE ticol042.T$SQNB = '[:T$SQNB]'
+        </stringSQL>
+      </operationName>
+      <operationName name="validateTimeSaveRecord">
+        <stringSQL>
+          SELECT T$SQNB AS SQNB FROM {2} WHERE T$PDNO = '[:T$PDNO]' AND T$DATE BETWEEN (sysdate+5/24) - [:T$TIME]/1000 AND sysdate+5/24
+        </stringSQL>
+      </operationName>
+      <operationName name="consultambrl">
+        <stringSQL>
+          SELECT T$MBRL AS MBRL FROM {0}.tticol000{1}
+        </stringSQL>
+      </operationName>
+      <operationName name="ActualizarNorpTicol042">
+        <stringSQL>
+          UPDATE {0}.tticol042{1} SET T$NORP = '[:T$NORP]' WHERE T$SQNB like '%[:T$SQNB]%'
+        </stringSQL>
+      </operationName>
+    </Module>

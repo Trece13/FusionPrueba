@@ -1,0 +1,125 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MDMasterPage.master.cs" Inherits="whusap.MDMasterPage" %>
+<%@ Register TagPrefix="osm" Namespace="OboutInc.SlideMenu" Assembly="obout_SlideMenu3_Pro_Net" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+
+    <style type="text/css">
+        .HeaderGrid
+        {
+    background-color: #EAEAEA;
+    color: #7D7D7D;
+    font-family: verdana;
+    font-size: 10px;
+    font-style: normal;
+    text-align: center;
+    height: 10px;
+    font-weight: normal;
+            }       
+        .tableDefault4
+        {
+            width: 60%;
+            height: 30%;
+        }        
+
+
+        .style4
+        {
+            width: 5%;
+        }
+        .style5
+        {
+            width: 2%;
+        }
+        .style6
+        {
+            width: 33%;
+        }
+
+        </style>        
+    <title></title>
+    <link href="~/Styles/MDStyles.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/calendar-blue.css" rel="Stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="Encabezado" runat="server">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    </asp:ContentPlaceHolder>
+</head>
+ 
+<body id="Cuerpo" runat="server" >
+
+ <script src="<%= ResolveUrl("~/Scripts/jquery-1.11.3.js") %>" type="text/javascript"></script>
+ <script src="<%= ResolveUrl("~/Scripts/jquery-1.4.1.min.js") %>" type="text/javascript"></script>
+ <script src="<%= ResolveUrl("~/Scripts/JSON-js-master/json2.js") %>" type="text/javascript"></script>
+ <script type="text/javascript" language="javascript" src="<%= ResolveUrl("~/Scripts/script.js") %>" > </script>
+
+ <form id="formHeaderMaster" runat="server" > <!-- defaultbutton="btnSend"> -->
+   <div style="background-color:#F0F0F0">
+   <table style="width: 42%; height: 10%;" >
+     <tr>
+       <td></td>
+       <td class="style5"><img alt="" src="../../images/logophoenix_s.jpg" /></td>
+       <td></td>
+       <td valign="top" class="style6">
+          <div id="divSeparador" style="height: 15px"></div>
+          <table align="left" border="0" cellspacing="0" cellpadding="0" 
+               
+               style="vertical-align: middle; height: 10%; width: 93%; margin-right: 0px;">
+             <tr>
+               <td class="style2" nowrap="nowrap"><b>User </b>:</td>
+               <td class="style2"><b><asp:Label ID="lblUserLogin" runat="server" Text="Label" 
+                       Font-Italic="True"></asp:Label></b></td>
+             </tr>
+             <tr>
+               <td class="style2" nowrap="nowrap"><b>Name </b>:</td>
+               <td class="style2" nowrap="nowrap" width="90%"><b><asp:Label ID="lblUserName" runat="server" 
+                       Text="Label" Font-Italic="True"></asp:Label></b></td>
+            </tr>
+          </table> 
+       </td>
+       <td style="vertical-align: bottom; text-align: center"  valign="bottom"  nowrap="nowrap" align="center"><h3><asp:Label ID="lblPageTitle" runat="server" Text="Label"></asp:Label></h3></td>
+     </tr>
+   </table>
+           
+   
+   <div style="height:45px; vertical-align:middle; position: relative;" >
+     <span>
+       <asp:Button ID="btnSessionOut" runat="server" Text="Close Session" 
+           Font-Bold="False" Font-Names="Arial Rounded MT Bold"  Font-Size="9pt" 
+           onclick="btnSessionOut_Click" CssClass="ButtonsSendSave" Height="50%" 
+           Font-Underline="True" CausesValidation="False"/></span>
+     <span>
+       <asp:Button ID="btnMainMenu" runat="server" Text="Main Menu" 
+           Font-Bold="False" Font-Names="Arial Rounded MT Bold" Font-Size="9pt" 
+           onclick="btnMainMenu_Click" CssClass="ButtonsSendSave" Height="50%" 
+           Font-Underline="True" CausesValidation="False"/></span>   
+   </div>
+
+   <div style="border-style: 0; border-color: 0; border-width: 0px; background-color:#BCC7D8; height: 1px;">
+
+   </div>
+   </div>
+   <h3><asp:Label ID="lblPageError" runat="server" Text="Label" CssClass="errorMsg" ForeColor="Red" Visible="false"></asp:Label></h3>
+    <table style="width: 100%;" >
+     <tr><td colspan="2" /></tr>
+     <tr>
+       <td width="15%" height="100%" >
+		  <osm:SlideMenu id = "mainMenu"
+		  		runat = "server"
+		  		AutoPostback="true"
+		  		AllExpanded="True" 
+                MinimumChildrenHeight = "-1" 
+               ViewStateMode="Enabled" CSSChildSelected="SMChildSelected" >
+          </osm:SlideMenu>			
+	   </td>
+       <td>
+          <asp:ContentPlaceHolder ID="Contenido" runat="server"></asp:ContentPlaceHolder>
+       </td>
+     </tr>
+     <tr><td colspan="2"></td></tr>
+   </table>
+  </form>
+  <input id="hOpen" type="hidden" name="hOpen" runat="server" value="" />
+</body>
+</html>

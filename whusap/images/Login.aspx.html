@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0041)http://localhost:56800/Pedidos/Login.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>
+
+</title><link href="./Login.aspx_files/Site.css" rel="stylesheet" type="text/css"><link rel="stylesheet" type="text/css" href="./Login.aspx_files/bootstrap.min.css">
+	<script src="./Login.aspx_files/jquery-1.10.2.js.descarga" type="text/javascript"></script>
+	<script type="text/JavaScript" language="JavaScript" src="./Login.aspx_files/bootstrap.js.descarga"></script>
+    
+    <script src="./Login.aspx_files/jquery-1.10.2.js.descarga" type="text/javascript"></script>
+    <script type="text/javascript">
+        function openModal() {
+            $('#myModal').css('display', 'block');
+        }
+    </script>
+</head>
+<body class="modal-open" style="">
+    <form method="post" action="http://localhost:56800/Pedidos/Login.aspx" id="ctl01">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKLTMwMDE5MTU0MQ9kFgJmD2QWAgIDD2QWAgIBD2QWEgIBDxBkEBUCB0VOR0xJU0gIRVNQQcORT0wVAgdFTkdMSVNICEVTUEHDkU9MFCsDAmdnFgFmZAIDDw9kFgIeC3BsYWNlaG9sZGVyBQRVc2VyZAIFDw9kFgIfAAUIUGFzc3dvcmRkAgcPFgIeCWlubmVyaHRtbAUQRm9yZ290IFBhc3N3b3JkP2QCCQ8PFgIeBFRleHQFDVNlbmQgcGFzc3dvcmRkZAILDw8WAh8CBRhQbGVhc2UsIGVudGVyIHlvdXIgdXNlci5kZAINDw9kFgIfAAUEVXNlcmQCDw8WAh8BBQ1TZW5kIHBhc3N3b3JkZAIRDxYCHwEFBUNsb3NlZGTlSjhHTnuztNGvM/FAhI6XIad5MxeUBG8+19fIZBGZBg==">
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['ctl01'];
+if (!theForm) {
+    theForm = document.ctl01;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AFF0E792">
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAdrO+ytOmZhC6gwRl/FHths86QWs3ae1mqvyXGL9O1JtGYt5w5/I71H5tpLNmeP67Qijw6FgP8qCIhkYPk74SvJWeEcU1kVFrLJG4nbVZJIOdzvklUIpVIKp6KWG0AeFS6SmDoNxpZDC7VU5K9Dgug6M10dZcpFMgTvGqt2xwXMzRUpI1zXQvOE66wJHpUkjCo=">
+</div>
+        
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <div class="fadeIn first">
+                <img src="./Login.aspx_files/LogoGrupoPhoenix2.jpg" id="icon" alt="Grupo Phoenix">
+            </div>
+            <select name="ctl00$MainContentLogin$ddlIdioma" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$MainContentLogin$ddlIdioma\&#39;,\&#39;\&#39;)&#39;, 0)" id="MainContentLogin_ddlIdioma" class="select">
+	<option selected="selected" value="ENGLISH">ENGLISH</option>
+	<option value="ESPAÑOL">ESPAÑOL</option>
+
+</select>
+            <hr>
+            <input name="ctl00$MainContentLogin$txtUsuario" type="text" id="txtUsuario" class="form-control" placeholder="User">
+            <input name="ctl00$MainContentLogin$txtPassword" type="password" id="txtPassword" class="form-control" placeholder="Password">
+            <hr>
+            <div id="formFooter">
+                <a href="javascript:void(0)" id="lkForgotPassword" onclick="openModal();" class="underlineHover" style="text-decoration: none;" data-toggle="modal" data-target="#myModal">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade in" id="myModal" role="dialog" style="display: block;" aria-hidden="false">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:blue;">
+                    <button type="button" class="close" data-dismiss="modal">
+                        ×</button>
+                    <span id="MainContentLogin_lblSendPassword" style="color:White;">Send password</span>
+                </div>
+                <div class="modal-body">
+                    <span id="MainContentLogin_lblInformation" style="font-weight:bold;">Please, enter your user.</span>
+                    <input name="ctl00$MainContentLogin$txtUserChange" type="text" id="MainContentLogin_txtUserChange" class="form-control" placeholder="User">
+                </div>
+                <div class="modal-footer">
+                    <button id="MainContentLogin_btnSendPassword" type="button" class="btn btn-info" onclick="btnSendPassword_OnClick" style="background-color:Blue;">Send password</button>
+                    <button id="MainContentLogin_btnClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </form>
+
+
+<div class="modal-backdrop fade in"></div></body></html>

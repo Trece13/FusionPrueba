@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDE19C17-E857-4D46-A761-128618225C32}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>whusa.Interfases</RootNamespace>
+    <AssemblyName>whusa.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x32|AnyCPU'">
+    <OutputPath>bin\x32\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\whusa.DAL.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\whusa.DAL.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x32|x86'">
+    <OutputPath>bin\x86\x32\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDAL\BaseDal.cs" />
+    <Compile Include="BaseDAL\ComplexDataAccess.cs" />
+    <Compile Include="BaseDAL\ComplexDataAccessImplements.cs" />
+    <Compile Include="datatable.cs" />
+    <Compile Include="Datatable_2.cs" />
+    <Compile Include="Datatable_3.cs" />
+    <Compile Include="ttccol307.cs" />
+    <Compile Include="ttccom110.cs" />
+    <Compile Include="tticol082.cs" />
+    <Compile Include="twhcol019.cs" />
+    <Compile Include="twhcol025.cs" />
+    <Compile Include="twhcol122.cs" />
+    <Compile Include="twhinh220.cs" />
+    <Compile Include="tcisli205.cs" />
+    <Compile Include="tcisli245.cs" />
+    <Compile Include="tqmptc011.cs" />
+    <Compile Include="transfer.cs" />
+    <Compile Include="ttcmcs003.cs" />
+    <Compile Include="ttcmcs005.cs" />
+    <Compile Include="tticol032.cs" />
+    <Compile Include="tticol077.cs" />
+    <Compile Include="tticol085.cs" />
+    <Compile Include="tticol095.cs" />
+    <Compile Include="tticol100.cs" />
+    <Compile Include="tticol101.cs" />
+    <Compile Include="tticol111.cs" />
+    <Compile Include="tticol116.cs" />
+    <Compile Include="tticol118.cs" />
+    <Compile Include="tticol180.cs" />
+    <Compile Include="tqmcol040.cs" />
+    <Compile Include="tqmptc101.cs" />
+    <Compile Include="ttccol300.cs" />
+    <Compile Include="ttccol303.cs" />
+    <Compile Include="ttcibd001.cs" />
+    <Compile Include="ttdcol524.cs" />
+    <Compile Include="tticol025.cs" />
+    <Compile Include="tticol030.cs" />
+    <Compile Include="tticol042.cs" />
+    <Compile Include="tticol074.cs" />
+    <Compile Include="tticol075.cs" />
+    <Compile Include="tticol127.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ttccol301.cs" />
+    <Compile Include="tticol011.cs" />
+    <Compile Include="tticol020.cs" />
+    <Compile Include="tticol022.cs" />
+    <Compile Include="tticol080.cs" />
+    <Compile Include="tticol090.cs" />
+    <Compile Include="tticol125.cs" />
+    <Compile Include="tticol130.cs" />
+    <Compile Include="tticol132.cs" />
+    <Compile Include="tticst001.cs" />
+    <Compile Include="ttihra130.cs" />
+    <Compile Include="ttirou003.cs" />
+    <Compile Include="ttisfc001.cs" />
+    <Compile Include="ttscol100.cs" />
+    <Compile Include="ttscol101.cs" />
+    <Compile Include="ttticol118.cs" />
+    <Compile Include="ttwhcol016.cs" />
+    <Compile Include="ttwhcol017.cs" />
+    <Compile Include="twhcol010.cs" />
+    <Compile Include="twhcol020.cs" />
+    <Compile Include="twhcol080.cs" />
+    <Compile Include="twhcol123.cs" />
+    <Compile Include="twhcol125.cs" />
+    <Compile Include="twhcol130.cs" />
+    <Compile Include="twhinh210.cs" />
+    <Compile Include="twhinh225.cs" />
+    <Compile Include="twhinh430.cs" />
+    <Compile Include="twhcol002.cs" />
+    <Compile Include="twhcol015.cs" />
+    <Compile Include="twhcol018.cs" />
+    <Compile Include="twhcol072.cs" />
+    <Compile Include="twhcol119.cs" />
+    <Compile Include="twhcol120.cs" />
+    <Compile Include="twhcol124.cs" />
+    <Compile Include="twhinh431.cs" />
+    <Compile Include="twhinr140.cs" />
+    <Compile Include="twhltc100.cs" />
+    <Compile Include="twhwmd200.cs" />
+    <Compile Include="twhwmd300.cs" />
+    <Compile Include="XMLGenerate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{14473CE6-6485-461A-BE49-24A1D8D7973B}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SendMailService\SendMailService.csproj">
+      <Project>{428C00F1-E772-4B8F-A222-C26F73CE11E3}</Project>
+      <Name>SendMailService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilidades\Utilidades.csproj">
+      <Project>{236EE324-1A87-41B4-AA11-1543D49AEEA4}</Project>
+      <Name>Utilidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

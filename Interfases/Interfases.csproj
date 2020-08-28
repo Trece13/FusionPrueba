@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{30E4E313-2EBB-4181-AAAB-24E2F302CE4C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>whusa.Interfases</RootNamespace>
+    <AssemblyName>whusa.Interfases</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x32|AnyCPU'">
+    <OutputPath>bin\x32\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\whusa.Interfases.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\whusa.Interfases.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x32|x86'">
+    <OutputPath>bin\x86\x32\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="IntefazDAL_transfer.cs" />
+    <Compile Include="IntefazDAL_ttccom110.cs" />
+    <Compile Include="IntefazDAL_tticol082.cs" />
+    <Compile Include="IntefazDAL_twhinh220.cs" />
+    <Compile Include="IntefazDAL_twhinh225.cs" />
+    <Compile Include="InterfazDAL_tcisli205.cs" />
+    <Compile Include="InterfazDAL_tcisli245.cs" />
+    <Compile Include="InterfazDAL_tqmcol040.cs" />
+    <Compile Include="InterfazDAL_tqmptc011.cs" />
+    <Compile Include="InterfazDAL_tqmptc101.cs" />
+    <Compile Include="InterfazDAL_Trasnfers.cs" />
+    <Compile Include="InterfazDAL_ttccol300.cs" />
+    <Compile Include="InterfazDAL_ttccol301.cs" />
+    <Compile Include="InterfazDAL_ttccol303.cs" />
+    <Compile Include="InterfazDAL_ttccol307.cs" />
+    <Compile Include="InterfazDAL_ttcibd001.cs" />
+    <Compile Include="InterfazDAL_ttcmcs003.cs" />
+    <Compile Include="InterfazDAL_ttcmcs005.cs" />
+    <Compile Include="InterfazDAL_tticol025.cs" />
+    <Compile Include="InterfazDAL_tticol030.cs" />
+    <Compile Include="InterfazDAL_tticol032.cs" />
+    <Compile Include="InterfazDAL_tticol042.cs" />
+    <Compile Include="InterfazDAL_tticol074.cs" />
+    <Compile Include="InterfazDAL_tticol075.cs" />
+    <Compile Include="InterfazDAL_tticol077.cs" />
+    <Compile Include="InterfazDAL_tticol085.cs" />
+    <Compile Include="InterfazDAL_tticol095.cs" />
+    <Compile Include="InterfazDAL_tticol100.cs" />
+    <Compile Include="InterfazDAL_tticol101.cs" />
+    <Compile Include="InterfazDAL_tticol111.cs" />
+    <Compile Include="InterfazDAL_tticol116.cs" />
+    <Compile Include="InterfazDAL_tticol118.cs" />
+    <Compile Include="InterfazDAL_tticol127.cs" />
+    <Compile Include="IContratoServicioWeb.cs" />
+    <Compile Include="InterfazDAL_tticol011.cs" />
+    <Compile Include="InterfazDAL_tticol020.cs" />
+    <Compile Include="InterfazDAL_tticol022.cs" />
+    <Compile Include="InterfazDAL_tticol080.cs" />
+    <Compile Include="InterfazDAL_tticol090.cs" />
+    <Compile Include="InterfazDAL_tticol125.cs" />
+    <Compile Include="InterfazDAL_tticol130.cs" />
+    <Compile Include="InterfazDAL_tticol132.cs" />
+    <Compile Include="InterfazDAL_tticol180.cs" />
+    <Compile Include="InterfazDAL_tticst001.cs" />
+    <Compile Include="InterfazDAL_ttihra130.cs" />
+    <Compile Include="InterfazDAL_ttirou003.cs" />
+    <Compile Include="InterfazDAL_ttisfc001.cs" />
+    <Compile Include="InterfazDAL_ttscol100.cs" />
+    <Compile Include="InterfazDAL_ttwhcol016.cs" />
+    <Compile Include="InterfazDAL_ttwhcol017.cs" />
+    <Compile Include="InterfazDAL_twhcol002.cs" />
+    <Compile Include="InterfazDAL_twhcol015.cs" />
+    <Compile Include="InterfazDAL_twhcol018.cs" />
+    <Compile Include="InterfazDAL_ttdcol524.cs" />
+    <Compile Include="InterfazDAL_twhcol010.cs" />
+    <Compile Include="InterfazDAL_twhcol019.cs" />
+    <Compile Include="InterfazDAL_twhcol020.cs" />
+    <Compile Include="InterfazDAL_twhcol025.cs" />
+    <Compile Include="InterfazDAL_twhcol072.cs" />
+    <Compile Include="InterfazDAL_twhcol080.cs" />
+    <Compile Include="InterfazDAL_twhcol119.cs" />
+    <Compile Include="InterfazDAL_twhcol120.cs" />
+    <Compile Include="InterfazDAL_twhcol122.cs" />
+    <Compile Include="InterfazDAL_twhcol123.cs" />
+    <Compile Include="InterfazDAL_twhcol124.cs" />
+    <Compile Include="InterfazDAL_twhcol125.cs" />
+    <Compile Include="InterfazDAL_twhcol130.cs" />
+    <Compile Include="InterfazDAL_twhinh210.cs" />
+    <Compile Include="InterfazDAL_twhinh430.cs" />
+    <Compile Include="InterfazDAL_twhinh431.cs" />
+    <Compile Include="InterfazDAL_twhinr140.cs" />
+    <Compile Include="InterfazDAL_twhltc100.cs" />
+    <Compile Include="InterfazDAL_twhwmd200.cs" />
+    <Compile Include="InterfazDAL_twhwmd300.cs" />
+    <Compile Include="InterfazDAL_XMLGenerate.cs" />
+    <Compile Include="Interfaz_Documentos.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{FDE19C17-E857-4D46-A761-128618225C32}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{14473CE6-6485-461A-BE49-24A1D8D7973B}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

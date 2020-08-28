@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="E:\SitiosPrueba" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/Entidades.pdb" publishTime="05/10/2016 04:10:28" />
+    <file relUrl="bin/Entidades.dll" publishTime="05/10/2016 04:10:28" />
+    <file relUrl="bin/Interfases.dll" publishTime="05/10/2016 04:10:30" />
+    <file relUrl="Web.config" publishTime="05/10/2016 04:35:33" />
+    <file relUrl="bin/ServicioWCF.pdb" publishTime="05/10/2016 04:10:31" />
+    <file relUrl="bin/Interfases.pdb" publishTime="05/10/2016 04:10:30" />
+    <file relUrl="bin/ServicioWCF.dll" publishTime="05/10/2016 04:10:31" />
+    <file relUrl="ServicioPrueba.svc" publishTime="05/09/2016 22:17:52" />
+  </publishProfile>
+</publishData>

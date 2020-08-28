@@ -1,0 +1,154 @@
+﻿  .rTable     
+  {
+    display: block;    
+    width: 100%; 
+  } 
+  .rTableHeading, .rTableBody, .rTableFoot, .rTableRow
+  {
+    clear: both;
+    border-width: 1px;
+    border-color: #35496A;
+  } 
+    
+  .rTableHead, .rTableFoot
+  {
+    background-color: #DDD;
+    font-weight: bold; 
+  } 
+  .rTableCell, .rTableHead 
+  {
+    /*border: 1px solid #2A3A57;    */
+    float: left;    
+    height: 18px;    
+    overflow: hidden;    
+    padding: 3px 1.8%;    
+    width: 10%; 
+  } 
+
+  .rTableCellLeft
+{
+    /*border: 1px solid #2A3A57;    */
+    float: left;
+    height: 18px;
+    overflow: hidden;
+    padding: 3px 1.8% 3px 0%;
+    width: 10%;
+    vertical-align: middle;
+    text-align: left;
+} 
+  
+  .rTableCellHead
+  {
+    background-color: #DDDDDD;
+    border: 1px solid #2A3A57;
+    float: left;
+    height: 16px;
+    overflow: hidden;
+    padding: 3px 1.8%;
+    width: 2%;
+    border-left-width: 0.5px;
+  } 
+
+  .rTableCellError
+  {
+    border: 0px ; /*solid #999999; */ 
+    float: left;    
+    height: 18px;    
+    overflow: hidden;    
+    padding: 3px 1.8%;    
+    width: 15%; 
+    text-align: left;   
+  } 
+  
+  .rTable:after 
+  {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0; 
+  } 
+
+ /* Controles */
+
+  .DropDownList
+  {
+    border: 1px solid #2A3B57;
+    background-color: #EEEEEE;
+    font-family: Tahoma;
+    font-size: small;
+    vertical-align: middle;
+  }
+  
+  .TextBox
+  {
+      border: 1px solid #2A3B57;
+      font-family: Tahoma;
+      font-size: small;
+      vertical-align: middle;
+  }        
+
+  .ButtonsSendSave
+  {
+      border: 1px solid #35496A;
+      font-family: Tahoma;
+      font-size: 9pt;
+      vertical-align: middle;
+      text-align:center;
+      background-color:#DEE1E7;
+      height:25px;
+  }        
+
+  .lblMessage
+  {
+      font-family: Tahoma;
+      font-size: 10pt;
+      color: Red;     
+      vertical-align: middle;
+      text-align:center;
+      background-color:#DEE1E7;
+      height:35px;
+      width:100px;
+  }             
+
+/* Text Format*/
+  .errorMsg
+  {
+    color: Black;
+    font-weight: bold;
+    font-size: 12px;
+    font-family:Times New Roman;
+  }
+  .style2
+  {
+    color: Black;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    text-align: Left;
+    height: 10px;
+  }
+  
+  .lblTitulos
+{
+    color: Black;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: oblique;
+    text-align: Left;
+    height: 10px;
+}  
+
+  .printIFrame
+  {
+     border-width: 1px; 
+     border-color: #2A3B57; 
+     vertical-align: middle; 
+     background-color: #CDCDCD;
+     overflow: scroll;
+  }
+
+
+body {
+}

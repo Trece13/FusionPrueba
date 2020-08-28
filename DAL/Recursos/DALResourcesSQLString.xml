@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DALResources>
+  <Modules>
+    <Module name="ttccol301">
+      <operationName name="ConsultarRegistrosOrdenParam">
+        <stringSQL>
+          SELECT rec.t$pdno ORDEN, rec.t$pono POSICION, rec.t$cwar ALMACEN, rec.t$clot LOTE, rec.t$sitm ARTICULO, " +
+          art.t$dsca DESCRIPCION, art.t$cuni UNIDAD, rec.t$ques CANT_EST, rec.t$qucs ACT_CANT, " +
+          rec.t$iswh ISS_WAREH, ibd200.t$oqmf FACTOR, art.t$kltc LOTE, rec.ROWID ID " +
+          FROM " + owner + ".tticst001" + env + " rec INNER JOIN " +
+          owner + ".ttcibd001" + env + " art ON rec.t$sitm = art.t$item  INNER JOIN " +
+          owner + ".ttcibd200" + env + " ibd200 ON art.t$item = ibd200.t$item INNER JOIN " +
+          owner + ".ttisfc001" + env + " sfc ON rec.t$pdno = sfc.t$pdno " +
+          WHERE sfc.t$osta in('5','7','9') AND rec.t$nnts = 1 AND  rec.t$qucs > 0 " +
+          AND TRIM(rec.t$pdno)='{0}'";
+        </stringSQL>
+      </operationName>
+      <operationName name="InsertarRegistro">
+        <stringSQL>
+          Insert into algo from algo
+        </stringSQL>
+      </operationName>
+    </Module>
+    <Module name="tticol080">
+      <operationName name="insertarRegistro">
+        <stringSQL>
+          "INSERT INTO " + <%# Eval("tabla") %> +
+          "(T$ORNO, T$PONO, T$ITEM, T$CWAR, T$QUNE, T$LOGN, T$DATE, T$PROC, "+
+          "T$REFCNTD, T$REFCNTU,T$CLOT)" +
+          "VALUES(:T$ORNO, :T$PONO, :T$ITEM, :T$CWAR, :T$QUNE, :T$LOGN, sysdate+(5/24) ," +
+          ":T$PROC, :T$REFCNTD, :T$REFCNTU, :T$CLOT)"
+        </stringSQL>      
+      </operationName>     
+    </Module>
+  </Modules>
+</DALResources>

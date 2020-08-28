@@ -1,0 +1,29 @@
+﻿Instalando ensamblado 'C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.InstallLog
+   assemblypath = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe
+No se pudieron encontrar instaladores públicos con el atributo RunInstallerAttribute.Yes en el ensamblado C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe.
+Confirmando ensamblado 'C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.InstallLog
+   assemblypath = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe
+No se pudieron encontrar instaladores públicos con el atributo RunInstallerAttribute.Yes en el ensamblado C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe.
+Quitar el archivo InstallState porque no hay instaladores.
+Instalando ensamblado 'C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.InstallLog
+   assemblypath = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe
+Instalando el servicio EmailQuality Service...
+Creando el origen de EventLog EmailQuality Service en el registro Application...
+Deshaciendo ensamblado 'C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe'.
+Los parámetros afectados son:
+   logtoconsole = 
+   logfile = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.InstallLog
+   assemblypath = C:\Users\Md\Documents\Desarrollo Fusion\Ultimo Desarrollo Fusion\SendEmailQualityCertificate\bin\Debug\SendEmailQualityCertificate.exe
+Restaurando el registro de eventos al estado anterior para el origen EmailQuality Service.
+Excepción durante la fase de retroceso al estado original del instalador System.Diagnostics.EventLogInstaller.
+System.Security.SecurityException: No se encontró el origen, pero no se pudo buscar en algunos o todos los registros de eventos. Registros inaccesibles: Security.
+Excepción durante la fase de instalación de retroceso al estado original. Esta excepción se omitirá y se continuará con el retroceso al estado original. Sin embargo, puede que el equipo no recupere el estado inicial hasta que se haya completado esta fase.

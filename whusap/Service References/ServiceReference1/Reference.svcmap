@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f3478d47-50ab-43b6-9ece-cf2ba3d9bfdd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:61464/ServicioPrueba.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioPrueba.disco" MetadataType="Disco" ID="75cac7d1-4258-4fd8-a1fc-0f29121e086f" SourceId="1" SourceUrl="http://localhost:61464/ServicioPrueba.svc?disco" />
+    <MetadataFile FileName="ServicioPrueba.wsdl" MetadataType="Wsdl" ID="b524f539-5487-40d4-b9a5-8385d39f270e" SourceId="1" SourceUrl="http://localhost:61464/ServicioPrueba.svc?wsdl" />
+    <MetadataFile FileName="ServicioPrueba.xsd" MetadataType="Schema" ID="4eac3df0-a37c-4541-8984-cde5b8394a89" SourceId="1" SourceUrl="http://localhost:61464/ServicioPrueba.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioPrueba1.xsd" MetadataType="Schema" ID="96d63791-e69d-4cc3-93cb-8f496486cf11" SourceId="1" SourceUrl="http://localhost:61464/ServicioPrueba.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServicioPrueba2.xsd" MetadataType="Schema" ID="2cede2d4-5cb4-49fe-a4a6-868ff46aefc5" SourceId="1" SourceUrl="http://localhost:61464/ServicioPrueba.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioPrueba3.xsd" MetadataType="Schema" ID="4d4d7904-1d21-49cb-a178-cae593ad4002" SourceId="1" SourceUrl="http://localhost:61464/ServicioPrueba.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

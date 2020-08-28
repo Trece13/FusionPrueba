@@ -1,0 +1,7 @@
+*.txt
+*.cache
+*.log
+*.pdb
+*.dll
+
+!*/bin/*

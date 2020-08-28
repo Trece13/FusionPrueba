@@ -1,0 +1,243 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MDMasterPage.master.cs"
+    Inherits="whusap.MDMasterPage" %>
+
+<%@ Register TagPrefix="osm" Namespace="OboutInc.SlideMenu" Assembly="obout_SlideMenu3_Pro_Net" %>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        crossorigin="anonymous" />
+    <style type="text/css">
+        .HeaderGrid
+        {
+            background-color: #EAEAEA;
+            color: #7D7D7D;
+            font-family: verdana;
+            font-size: 10px;
+            font-style: normal;
+            text-align: center;
+            height: 10px;
+            font-weight: normal;
+        }
+        .tableDefault4
+        {
+            width: 60%;
+            height: 30%;
+        }
+        
+        
+        #footer
+        {
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            zoom: 103%;
+        }
+        #Navp
+        {
+            background-color: white !important;
+            zoom: 130%;
+        }
+        
+        #LblHome
+        {
+            
+            position: absolute;
+            font-family: Segoe UI Light;
+            font-size: 20px;
+            margin-left: -12%;
+        }
+        
+        #Cuerpo
+        {
+            display: none;
+        }
+    </style>
+    <title>Grupo Phoenix - BAAN Fusion</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link href="~/Styles/MDStyles.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/calendar-blue.css" rel="Stylesheet" type="text/css" />
+    <script type="text/javascript">
+
+
+        function navegador() {
+            var agente = window.navigator.userAgent;
+            var navegadores = ["Chrome", "Firefox", "Safari", "Opera", "Trident", "MSIE", "Edge"];
+            for (var i in navegadores) {
+                if (agente.indexOf(navegadores[i]) != -1) {
+                    return navegadores[i];
+                }
+                else {
+                    return "Explorer"
+                }
+            }
+        }
+
+        function RedimencionExplorer() {
+            var Navegador = navegador();
+            if (Navegador == "Explorer") {
+                $("#Navp").css({ 'zoom': '100%' });
+                $("#footer").css({ 'zoom': '100%' });
+            }
+        }
+
+        $(function () {
+            RedimencionExplorer();
+            $('#Cuerpo').show(500);
+        })
+        
+    </script>
+    <asp:ContentPlaceHolder ID="Encabezado" runat="server">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    </asp:ContentPlaceHolder>
+</head>
+<body id="Cuerpo" runat="server">
+    <form id="Form1" runat="server">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light" id="Navp">
+    <a style = "display:none" class="navbar-brand" href="http://www.grupophoenix.com"><img src= "<%=String.Concat(ConfigurationManager.AppSettings["UrlBase"],"/images/logophoenixBody.jpg") %>" style="width:100px;" alt="Grupo Phoenix" /></a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <table>
+            <tr style = "display:none"><td colspan="2" style="font-size:10px;"><asp:Label runat="server" ID="lblDescUser"></asp:Label> <b><asp:Label runat="server" ID="lblUserLogin"></asp:Label></b></td></tr>
+            <tr style = "display:none"><td colspan="2" style="font-size:10px;"><asp:Label runat="server" ID="lblDescUsername"></asp:Label><b><asp:Label runat="server" ID="lblUserName"></asp:Label></b></td></tr>
+            <tr style = "display:none"><td colspan="2" style="font-size:10px;"><asp:Label runat="server" ID="lblDescDateSession"></asp:Label><b><asp:Label runat="server" ID="lblDateSession"></asp:Label></b></td></tr>
+            <tr style = "display:none"><td colspan="2" style="font-size:10px;"><asp:Label runat="server" ID="lblIdiom"></asp:Label>
+                <asp:DropDownList ClientIDMode="Static" runat="server" ID="ddlIdioma" 
+                    AutoPostBack="true" OnSelectedIndexChanged="ddlIdioma_OnSelectedIndexChanged" 
+                    Visible="False">
+                    <asp:ListItem Text="English" Value="INGLES" data-prueba="pruebaEN" />
+                    <asp:ListItem Text="Español" Value="ESPAÑOL" data-prueba="pruebaES"/>
+                </asp:DropDownList>
+            </td></tr>
+            <tr>
+                
+                <td style="font-size: 10px;"><asp:button ID="btnMainMenu" text="Main Menu" 
+                        runat="server" CssClass="ButtonsSendSave" OnClick="btnMainMenu_Click" 
+                        Visible="False" /></td>
+                <td><asp:button ID="btnCloseSession" text="Close Session" runat="server" 
+                        CssClass="ButtonsSendSave" OnClick="btnSessionOut_Click" Visible="False" /></td>
+                
+                <td>
+                    
+                </td>
+                <td>
+                    &nbsp;&nbsp;&nbsp;
+                    
+                </td>
+                <td>
+                    
+                </td>
+                        
+             </tr>
+            </table>
+            
+        </li>
+        <li class="nav-item" style="margin-left: 100px; display:none">
+            <a href="#"><label style="font-size:25px; font-weight:bold; color:Gray; margin-top:20px;">BAAN FUSION[ 
+            <asp:Label runat="server" ID="lblPageTitle" Visible="False"></asp:Label> ]</label></a>
+        </li>
+    </ul>
+    <div style="width:100%">
+        <div class="d-flex flex-row bd-highlight mb-3" style="float:left">
+    <div class="d-flex justify-content-start">
+        <asp:ImageButton ID="ImageButton3" 
+            runat="server" Height="70px" ImageUrl="~/images/logophoenix_s.jpg" 
+            onclick="btnMainMenu_Click" /></div>&nbsp;&nbsp;
+    </div>
+    <div class="d-flex justify-content-center" style="position: center ">
+        <!--<label class = "bd-title" id="LblHome" >Phoenix  Operation Portal</label>-->
+        <strong><asp:Label class = "bd-title" ID="LblHome" runat="server" Text="Label"></asp:Label></strong>
+    </div>
+    <div class="d-flex flex-row-reverse bd-highlight" >
+        <div style="margin-left: 10px"><asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images/exit.png" onclick="btnSessionOut_Click" /></div>
+    <!--<div><asp:Image ID="Image1" runat="server" ImageUrl="~/images/workflow.png"></asp:Image></div>-->
+    <div class="custom-switch">
+    <input type="checkbox" class="custom-control-input" id="FlowModeMenuSwitch">
+    <label class="custom-control-label" for="FlowModeMenuSwitch"></label>
+    </div>
+    </div>
+    </div>
+</nav>
+    <hr />
+    <h3>
+        <asp:Label ID="lblPageError" runat="server" Text="Label" CssClass="errorMsg" ForeColor="Red"
+            Visible="false"></asp:Label></h3>
+    <div class="col-md-10 offset-1">
+        <asp:ContentPlaceHolder ID="Contenido" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+    <input id="hOpen" type="hidden" name="hOpen" runat="server" value="" />
+</body>
+</html>
+<div id="footer" style="overflow: hidden; height: 4em; background-color: #2f80ed;
+    position: fixed" align="left">
+    <div style="width: 33%; float: left; text-align: center; margin-top: 1%">
+        <asp:label id="LblShif1" runat="server" font-names="Calibri" font-size="2em" forecolor="White"></asp:label>
+    </div>
+    <div style="width: 33%; float: left; text-align: center; margin-top: 1%">
+        <asp:label style="margin: auto" id="LblName1" runat="server" font-names="Calibri"
+            font-size="2em" forecolor="White"></asp:label>
+    </div>
+    <div style="width: 33%; float: left; text-align: center; margin-top: 1%">
+        <asp:label id="LblDate1" runat="server" font-names="Calibri" font-size="2em" forecolor="White"></asp:label>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var myPage = "<%= namePage %>";
+        //$('#LblHome').html(<%= namePage %>" - " + " Phoenix  Operation Portal ");
+        //HomeTitle();
+        $('#lblPage').show("1000");
+        $('#LblHome').show("slow");
+        var hora = $("#LblDate1");
+        var months = [
+            "January", "February", "March", "April", "May", "June", "July", "August", "September", "October",
+            "November", "December"
+        ];
+        setInterval(function () {
+            var HoraActual = new Date();
+            var Format = "Date : " + HoraActual.getDate() + " " + months[HoraActual.getMonth()] + " " + HoraActual.getFullYear() + ", " + HoraActual.getHours() + ":" + HoraActual.getMinutes() + " " + (HoraActual.getHours() >= 12 ? 'PM' : 'AM');
+            hora.html(Format);
+        },
+            100);
+    });
+
+
+
+    function HomeTitle() {
+        if ($('#LblTitleMainMenu')[0]) {
+            $('#LblHome').show("slow");
+        } else {
+            $('#LblHome').hide();
+        }
+    }
+
+
+</script>
+<style type="text/css">
+    .navbar
+    {
+        margin-bottom: 0;
+    }
+</style>
